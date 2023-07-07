@@ -20,6 +20,7 @@ return {
 					"regex",
 					"typescript",
 					"tsx",
+					"gitcommit",
 				},
 			})
 		end,
