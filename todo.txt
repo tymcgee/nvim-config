@@ -1,2 +1,1 @@
-- Add a progress bar of some kind for when the LSP is loading
 - Add some mechanic for switching buffers more easily (buffer line, harpoon, idk man)

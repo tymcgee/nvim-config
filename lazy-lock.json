@@ -7,6 +7,7 @@
   "code_runner.nvim": { "branch": "main", "commit": "01ce754d162170a3fcf372ad9f188a65c010f235" },
   "delaytrain.nvim": { "branch": "main", "commit": "eb8d2157e6a7de1b4f024f7ca5bccc4014d88b05" },
   "diffview.nvim": { "branch": "main", "commit": "94f5f40543e393d9028bae9ce2fedf6da3af701a" },
+  "fidget.nvim": { "branch": "main", "commit": "0ba1e16d07627532b6cae915cc992ecac249fb97" },
   "flit.nvim": { "branch": "main", "commit": "5c9a78b97f7f4301473ea5e37501b5b1d4da167b" },
   "friendly-snippets": { "branch": "main", "commit": "a94db1ee6ddfd238e725b0f90163fdd65d382464" },
   "gitsigns.nvim": { "branch": "main", "commit": "dc2962f7fce953a2a98e7c6d3d7fc4c1d1f66758" },
