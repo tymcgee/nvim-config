@@ -10,6 +10,10 @@ map("n", "<c-l>", "<cmd>TmuxNavigateRight<cr>")
 
 map({ "n", "v" }, "<leader>y", '"+y', { desc = "Copy to clipboard" })
 
+-- Buffer management
+map("n", "<s-l>", "<cmd>bn<cr>", { desc = "Next buffer" })
+map("n", "<s-h>", "<cmd>bp<cr>", { desc = "Previous buffer" })
+
 -- Clear search with <esc>
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
