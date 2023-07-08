@@ -21,6 +21,7 @@ return {
 					"typescript",
 					"tsx",
 					"gitcommit",
+					"toml",
 				},
 			})
 		end,
