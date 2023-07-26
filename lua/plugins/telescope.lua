@@ -38,7 +38,8 @@ return {
 				sort_mru = true,
 				mappings = {
 					i = {
-						["<s-d>"] = "delete_buffer",
+						-- TODO: this doesn't work because the default s-q happens first
+						-- ["<s-q>"] = "delete_buffer",
 					},
 				},
 			},
