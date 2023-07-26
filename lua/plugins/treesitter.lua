@@ -22,6 +22,7 @@ return {
 					"tsx",
 					"gitcommit",
 					"toml",
+					"sql",
 				},
 			})
 		end,
