@@ -1,5 +1,6 @@
 return {
 	"ja-ford/delaytrain.nvim",
+    enabled = false,
 	opts = {
 		ignore_filetypes = {
 			"minifiles",
