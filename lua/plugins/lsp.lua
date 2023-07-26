@@ -24,7 +24,7 @@ return {
 
 		-- Other tools
 		{ "jose-elias-alvarez/null-ls.nvim" },
-		{ "glepnir/lspsaga.nvim", config = true },
+		{ "nvimdev/lspsaga.nvim", config = true },
 	},
 	config = function()
 		-- Set up LSP
