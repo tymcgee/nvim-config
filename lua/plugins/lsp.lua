@@ -66,6 +66,8 @@ return {
 		vim.keymap.set("n", "<leader>cr", "<cmd>Lspsaga rename<cr>", { desc = "Rename Variable" })
 		vim.keymap.set({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<cr>", { desc = "Perform Code Action" })
 		vim.keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<cr>", { desc = "Go to Definition" })
+		vim.keymap.set("n", "gD", "<cmd>Lspsaga peek_definition<cr>", { desc = "Peek Definition" })
+		vim.keymap.set("n", "gr", "<cmd>Lspsaga finder<cr>", { desc = "Go to references" })
 		vim.keymap.set("n", "gl", "<cmd>Lspsaga show_line_diagnostics<cr>", { desc = "Line Diagnostics" })
 		vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<cr>", { desc = "Hover documentation" })
 		vim.keymap.set("n", "<leader>ft", "<cmd>Lspsaga term_toggle<cr>", { desc = "Toggle a terminal popup" })
