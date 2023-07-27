@@ -92,9 +92,9 @@ return {
 		local cmp = require("cmp")
 		cmp.setup({
 			-- Uncomment this to auto-select the first item
-			-- completion = {
-			--     completeopt = "menu,menuone,noinsert",
-			-- },
+			completion = {
+				completeopt = "menu,menuone,noinsert",
+			},
 			snippet = {
 				expand = function(args)
 					require("luasnip").lsp_expand(args.body)
@@ -113,10 +113,10 @@ return {
 				["<C-Space>"] = cmp.mapping.complete(),
 				["<C-e>"] = cmp.mapping.abort(),
 				-- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-				["<CR>"] = cmp.mapping.confirm({ select = false }),
+				["<CR>"] = cmp.mapping.confirm({ select = true }),
 				["<S-CR>"] = cmp.mapping.confirm({
 					behavior = cmp.ConfirmBehavior.Replace,
-					select = false,
+					select = true,
 				}),
 			}),
 			sources = cmp.config.sources({
