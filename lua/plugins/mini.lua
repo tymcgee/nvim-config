@@ -24,6 +24,28 @@ return {
 		end,
 	},
 	{
+		"echasnovski/mini.bufremove",
+		keys = {
+			{
+				"<s-q>",
+				function()
+					require("mini.bufremove").delete()
+				end,
+				desc = "Delete Buffer",
+			},
+			{
+				"<leader>bD",
+				function()
+					require("mini.bufremove").delete(0, true)
+				end,
+				desc = "Force Delete Buffer",
+			},
+		},
+		config = function()
+			require("mini.bufremove").setup()
+		end,
+	},
+	{
 		"echasnovski/mini.surround",
 		opts = {
 			mappings = {
