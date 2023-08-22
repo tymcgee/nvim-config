@@ -1,5 +1,6 @@
 vim.g.mapleader = "\\"
 vim.g.maplocalleader = "\\"
+vim.g.python_highlight_all = 1
 
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
