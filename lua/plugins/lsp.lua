@@ -38,18 +38,10 @@ return {
 				"<cmd>lua vim.lsp.buf.format({async = true})<cr>",
 				{ desc = "Format Document" }
 			)
+			-- use the active server
+			-- (if there's more than one active server, they will both run formatting)
+			lsp.buffer_autoformat()
 		end)
-
-		local format_servers = {
-			["null-ls"] = { "lua", "python", "rust", "json" },
-		}
-		lsp.format_mapping("<leader>cf", {
-			servers = format_servers,
-		})
-
-		lsp.format_on_save({
-			servers = format_servers,
-		})
 
 		lsp.ensure_installed({
 			"lua_ls",
