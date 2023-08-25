@@ -77,7 +77,7 @@ return {
 				[">"] = { action = "close", pair = "<>", neigh_pattern = "[^\\]%W" },
 				['"'] = { action = "closeopen", pair = '""', neigh_pattern = "[^\\]%W" },
 				["'"] = { action = "closeopen", pair = "''", neigh_pattern = "[^%a\\]%W" },
-				["`"] = { action = "openclose", pair = "``", neigh_pattern = "[^\\]%W" },
+				["`"] = { action = "closeopen", pair = "``", neigh_pattern = "[^\\]%W" },
 			},
 		},
 		config = function(_, opts)
