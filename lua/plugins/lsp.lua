@@ -52,7 +52,18 @@ return {
 		lsp.setup()
 
 		-- Add in neovim lua stuffs
-		require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
+		local lspconfig = require("lspconfig")
+		lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
+
+		lspconfig.html.setup({
+			settings = {
+				html = {
+					format = {
+						indentInnerHtml = true,
+					},
+				},
+			},
+		})
 
 		-- Set up lspsaga things
 		vim.keymap.set("n", "<leader>cr", "<cmd>Lspsaga rename<cr>", { desc = "Rename Variable" })
