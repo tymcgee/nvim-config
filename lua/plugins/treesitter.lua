@@ -1,6 +1,9 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		dependencies = {
+			"JoosepAlviste/nvim-ts-context-commentstring",
+		},
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				highlight = {
@@ -30,6 +33,12 @@ return {
 					"gitcommit",
 					"toml",
 					"sql",
+					"css",
+					"scss",
+				},
+				context_commentstring = {
+					enable = true,
+					enable_autocmd = false,
 				},
 			})
 		end,
