@@ -65,6 +65,24 @@ return {
 			},
 		})
 
+		lspconfig.svelte.setup({
+			settings = {
+				svelte = {
+					plugin = {
+						svelte = {
+							format = {
+								config = {
+									printWidth = 120,
+									svelteSortOrder = "options-scripts-styles-markup",
+								},
+							},
+						},
+					},
+					enable_ts_plugin = true,
+				},
+			},
+		})
+
 		-- Set up lspsaga things
 		vim.keymap.set("n", "<leader>cr", "<cmd>Lspsaga rename<cr>", { desc = "Rename Variable" })
 		vim.keymap.set({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<cr>", { desc = "Perform Code Action" })
