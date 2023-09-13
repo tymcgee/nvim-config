@@ -71,27 +71,6 @@ return {
 		end,
 	},
 	{
-		"echasnovski/mini.pairs",
-		opts = {
-			mappings = {
-				-- This works as a two-character pattern.
-				-- Only match if the character to the left isn't \
-				-- and the character to the right isn't alphanumeric (%w means alphanumeric, %W is the complement).
-				["("] = { neigh_pattern = "[^\\]%W" },
-				["["] = { neigh_pattern = "[^\\]%W" },
-				["{"] = { neigh_pattern = "[^\\]%W" },
-				["<"] = { action = "open", pair = "<>", neigh_pattern = "[^\\]%W" },
-				[">"] = { action = "close", pair = "<>", neigh_pattern = "[^\\]%W" },
-				['"'] = { action = "closeopen", pair = '""', neigh_pattern = "[^\\]%W" },
-				["'"] = { action = "closeopen", pair = "''", neigh_pattern = "[^%a\\]%W" },
-				["`"] = { action = "closeopen", pair = "``", neigh_pattern = "[^\\]%W" },
-			},
-		},
-		config = function(_, opts)
-			require("mini.pairs").setup(opts)
-		end,
-	},
-	{
 		"echasnovski/mini.files",
 		lazy = false,
 		keys = {
