@@ -1,7 +1,7 @@
 -- Set up lspconfig, mason, CMP, and null-ls
 return {
 	"VonHeikemen/lsp-zero.nvim",
-	branch = "v2.x",
+	branch = "v3.x",
 	dependencies = {
 		-- LSP Support
 		{ "neovim/nvim-lspconfig" },
@@ -27,10 +27,11 @@ return {
 		{ "nvimdev/lspsaga.nvim", config = true },
 	},
 	config = function()
-		-- Set up LSP
-		local lsp = require("lsp-zero").preset()
-		lsp.on_attach(function(client, bufnr)
-			lsp.default_keymaps({ bufnr = bufnr, omit = { "<F2>", "<F4>", "gd" } })
+		local lsp_zero = require("lsp-zero")
+		local lspconfig = require("lspconfig")
+
+		lsp_zero.on_attach(function(client, bufnr)
+			lsp_zero.default_keymaps({ buffer = bufnr, omit = { "<F2>", "<F4>", "gd" } })
 			-- Define keymaps here
 			vim.keymap.set(
 				"n",
@@ -40,46 +41,60 @@ return {
 			)
 			-- use the active server
 			-- (if there's more than one active server, they will both run formatting)
-			lsp.buffer_autoformat()
+			lsp_zero.buffer_autoformat()
 		end)
 
-		lsp.ensure_installed({
-			"lua_ls",
-			"rust_analyzer",
-			"pyright",
-		})
-
-		lsp.setup()
-
-		-- Add in neovim lua stuffs
-		local lspconfig = require("lspconfig")
-		lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
-
-		lspconfig.html.setup({
-			settings = {
-				html = {
-					format = {
-						indentInnerHtml = true,
-					},
-				},
+		require("mason").setup()
+		require("mason-lspconfig").setup({
+			ensure_installed = {
+				"lua_ls",
+				"rust_analyzer",
+				"pyright",
+				"html",
+				"jsonls",
+				"svelte",
+				"tsserver",
 			},
-		})
+			-- Put server configurations in here
+			handlers = {
+				lsp_zero.default_setup,
 
-		lspconfig.svelte.setup({
-			settings = {
-				svelte = {
-					plugin = {
-						svelte = {
-							format = {
-								config = {
-									printWidth = 120,
-									svelteSortOrder = "options-scripts-styles-markup",
+				lua_ls = function()
+					local lua_opts = lsp_zero.nvim_lua_ls()
+					lspconfig.lua_ls.setup(lua_opts)
+				end,
+
+				html = function()
+					lspconfig.html.setup({
+						settings = {
+							html = {
+								format = {
+									indentInnerHtml = true,
 								},
 							},
 						},
-					},
-					enable_ts_plugin = true,
-				},
+					})
+				end,
+
+				svelte = function()
+					lspconfig.svelte.setup({
+						settings = {
+							svelte = {
+								plugin = {
+									svelte = {
+										format = {
+											config = {
+												printWidth = 120,
+												svelteSortOrder = "options-scripts-styles-markup",
+											},
+										},
+									},
+								},
+								enable_ts_plugin = true,
+							},
+						},
+					})
+				end,
 			},
 		})
 
@@ -94,6 +109,7 @@ return {
 		vim.keymap.set("n", "<leader>ft", "<cmd>Lspsaga term_toggle<cr>", { desc = "Toggle a terminal popup" })
 
 		-- Set up null-ls
+		-- TODO: remove this, null-ls is archived
 		local nls = require("null-ls")
 		nls.setup({
 			sources = {
