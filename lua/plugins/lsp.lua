@@ -116,7 +116,7 @@ return {
 				nls.builtins.formatting.stylua,
 				nls.builtins.diagnostics.luacheck,
 				nls.builtins.formatting.black.with({ extra_args = { "--fast" } }),
-				nls.builtins.diagnostics.ruff,
+				-- nls.builtins.diagnostics.ruff,
 				nls.builtins.formatting.shfmt,
 				nls.builtins.formatting.yamlfmt,
 				nls.builtins.formatting.fixjson,
