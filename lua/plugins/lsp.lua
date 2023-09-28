@@ -127,6 +127,9 @@ return {
 
 		-- Set up CMP
 		local cmp = require("cmp")
+		local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
 		cmp.setup({
 			-- Uncomment this to auto-select the first item
 			completion = {
