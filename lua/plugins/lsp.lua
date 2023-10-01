@@ -39,6 +39,8 @@ return {
 				"<cmd>lua vim.lsp.buf.format({async = true})<cr>",
 				{ desc = "Format Document" }
 			)
+			vim.keymap.set("n", "<leader>cL", "<cmd>LspRestart<cr>", { desc = "Restart LSP" })
+
 			-- use the active server
 			-- (if there's more than one active server, they will both run formatting)
 			lsp_zero.buffer_autoformat()
