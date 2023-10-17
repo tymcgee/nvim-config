@@ -14,7 +14,7 @@ return {
                 { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
 
                 {
-                    sign = { name = { "GitSigns*" }, maxwidth = 1, colwidth = 1 },
+                    sign = { namespace = { "gitsigns*" }, maxwidth = 1, colwidth = 1 },
                     click = "v:lua.ScSa",
                 },
             },
