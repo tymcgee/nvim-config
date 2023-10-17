@@ -45,3 +45,8 @@ map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
 -- windows
 map("n", "<leader>-", "<C-W>s", { desc = "Split window below", remap = true })
 map("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap = true })
+
+-- bufferline
+-- TODO: can't figure out how to make these work, need to come up with good keybinds
+-- map("n", "<A-l>", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer to the right" })
+-- map("n", "<A-h>", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer to the left" })
