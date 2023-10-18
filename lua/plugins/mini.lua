@@ -1,9 +1,7 @@
 return {
 	{
 		"echasnovski/mini.ai",
-		config = function()
-			require("mini.ai").setup()
-		end,
+		config = true,
 	},
 	{
 		"echasnovski/mini.comment",
@@ -20,15 +18,11 @@ return {
 	},
 	{
 		"echasnovski/mini.cursorword",
-		config = function()
-			require("mini.cursorword").setup()
-		end,
+		config = true,
 	},
 	{
 		"echasnovski/mini.move",
-		config = function()
-			require("mini.move").setup()
-		end,
+		config = true,
 	},
 	{
 		"echasnovski/mini.bufremove",
@@ -48,9 +42,7 @@ return {
 				desc = "Force Delete Buffer",
 			},
 		},
-		config = function()
-			require("mini.bufremove").setup()
-		end,
+		config = true,
 	},
 	{
 		"echasnovski/mini.surround",
@@ -66,9 +58,6 @@ return {
 			},
 			n_lines = 300,
 		},
-		config = function(_, opts)
-			require("mini.surround").setup(opts)
-		end,
 	},
 	{
 		"echasnovski/mini.files",
@@ -94,5 +83,11 @@ return {
 				use_as_default_explorer = true,
 			},
 		},
+	},
+	{
+		"echasnovski/mini.sessions",
+		lazy = false,
+		keys = {},
+		config = true,
 	},
 }
