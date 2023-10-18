@@ -1,4 +1,4 @@
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+vim.api.nvim_create_autocmd("FileType", {
 	callback = function()
 		vim.opt.formatoptions:remove({ "c", "o" })
 	end,
