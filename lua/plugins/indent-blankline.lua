@@ -5,8 +5,13 @@ return {
 	opts = {
 		scope = {
 			highlight = {
+				-- i suppose these are not all necessarily different colors depending on the theme
 				"label",
+				"function",
+				"string",
+				"identifier",
 			},
+			show_start = false,
 		},
 		exclude = {
 			filetypes = {
