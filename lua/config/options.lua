@@ -41,12 +41,12 @@ vim.opt.sessionoptions = vim.opt.sessionoptions + "globals"
 vim.g.markdown_recommended_style = 0
 
 local signs = {
-	Error = " ",
-	Information = " ",
-	Hint = " ",
-	Warn = " ",
+    Error = " ",
+    Information = " ",
+    Hint = " ",
+    Warn = " ",
 }
 for type, icon in pairs(signs) do
-	local hl = "DiagnosticSign" .. type
-	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end

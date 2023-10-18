@@ -1,9 +1,9 @@
 return {
-	"j-hui/fidget.nvim",
-	tag = "legacy",
-	opts = {
-		text = {
-			spinner = "line",
-		},
-	},
+    "j-hui/fidget.nvim",
+    tag = "legacy",
+    opts = {
+        text = {
+            spinner = "line",
+        },
+    },
 }
