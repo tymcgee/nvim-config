@@ -11,8 +11,10 @@ map("n", "<c-l>", "<cmd>TmuxNavigateRight<cr>")
 map({ "n", "v" }, "<leader>y", '"+y', { desc = "Copy to clipboard" })
 
 -- Buffer management
-map("n", "<s-l>", "<cmd>bn<cr>", { desc = "Next buffer" })
-map("n", "<s-h>", "<cmd>bp<cr>", { desc = "Previous buffer" })
+map("n", "<s-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
+map("n", "<s-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Previous buffer" })
+map("n", "<A-v>", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer to the right" })
+map("n", "<A-c>", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer to the left" })
 
 -- Clear search with <esc>
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
@@ -45,8 +47,3 @@ map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
 -- windows
 map("n", "<leader>-", "<C-W>s", { desc = "Split window below", remap = true })
 map("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap = true })
-
--- bufferline
--- TODO: can't figure out how to make these work, need to come up with good keybinds
--- map("n", "<A-l>", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer to the right" })
--- map("n", "<A-h>", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer to the left" })
