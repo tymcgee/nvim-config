@@ -42,6 +42,7 @@ return {
                 map("n", "gD", "<cmd>Lspsaga peek_definition<cr>", "Peek definition", buf)
                 map("n", "gr", "<cmd>Lspsaga finder ref+def+imp<cr>", "Go to references", buf)
                 map("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature help", buf)
+                map("n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<cr>", "Go to type definition", buf)
                 map("n", "<leader>cr", "<cmd>Lspsaga rename<cr>", "Rename", buf)
                 map("n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", "Code actions", buf)
 
