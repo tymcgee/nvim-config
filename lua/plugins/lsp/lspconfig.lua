@@ -11,7 +11,8 @@ return {
         { "williamboman/mason-lspconfig.nvim" },
 
         -- Other tools
-        { "nvimdev/lspsaga.nvim",             config = true },
+        { "nvimdev/lspsaga.nvim", config = true },
+        { "stevearc/conform.nvim" },
     },
 
     config = function()
@@ -47,7 +48,9 @@ return {
                 map("n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", "Code actions", buf)
 
                 map("n", "gl", "<cmd>Lspsaga show_line_diagnostics<cr>", "Open diagnostic float", buf)
-                map({ "n", "x" }, "<leader>cf", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", "Format document", buf)
+                map({ "n", "x" }, "<leader>cf", function()
+                    require("conform").format({ bufnr = buf })
+                end, "Format document", buf)
             end,
         })
 
