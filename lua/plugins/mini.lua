@@ -48,12 +48,12 @@ return {
         "echasnovski/mini.surround",
         opts = {
             mappings = {
-                add = "gza", -- Add surrounding in Normal and Visual modes
-                delete = "gzd", -- Delete surrounding
-                find = "gzf", -- Find surrounding (to the right)
-                find_left = "gzF", -- Find surrounding (to the left)
-                highlight = "gzh", -- Highlight surrounding
-                replace = "gzr", -- Replace surrounding
+                add = "gza",            -- Add surrounding in Normal and Visual modes
+                delete = "gzd",         -- Delete surrounding
+                find = "gzf",           -- Find surrounding (to the right)
+                find_left = "gzF",      -- Find surrounding (to the left)
+                highlight = "gzh",      -- Highlight surrounding
+                replace = "gzr",        -- Replace surrounding
                 update_n_lines = "gzn", -- Update `n_lines`
             },
             n_lines = 300,
@@ -83,15 +83,5 @@ return {
                 use_as_default_explorer = true,
             },
         },
-    },
-    {
-        "echasnovski/mini.sessions",
-        lazy = false,
-        keys = {
-            { "<leader>qs", "<cmd>lua MiniSessions.read()<cr>",       desc = "Restore session" },
-            { "<leader>ql", "<cmd>lua MiniSessions.get_latest()<cr>", desc = "Restore latest session" },
-            { "<leader>qw", ":lua MiniSessions.write(",               desc = "Create new session" },
-        },
-        config = true,
     },
 }
