@@ -49,7 +49,7 @@ return {
 
                 map("n", "gl", "<cmd>Lspsaga show_line_diagnostics<cr>", "Open diagnostic float", buf)
                 map({ "n", "x" }, "<leader>cf", function()
-                    require("conform").format({ bufnr = buf })
+                    require("conform").format({ async = true, lsp_fallback = true })
                 end, "Format document", buf)
             end,
         })

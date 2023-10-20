@@ -3,12 +3,20 @@
 return {
     "stevearc/conform.nvim",
     opts = {
+        -- sub-list means "use the first one you find"
+        -- list means "use one after the other"
         formatters_by_ft = {
             lua = { "stylua" },
             python = { "black" },
-            json = { "fixjson", "jq" },
-            yaml = { "yamlfix", "yamlformat" },
+            go = { "gofumpt" },
+            json = { { "fixjson", "jq", "prettierd" } },
+            yaml = { { "yamlfix", "yamlformat" } },
             sh = { "shfmt" },
+            css = { "prettierd" },
+            scss = { "prettierd" },
+            html = { "prettierd", "djlint" },
+            javascript = { "prettierd" },
+            typescript = { "prettierd" },
         },
         format_on_save = {
             timeout_ms = 500,
