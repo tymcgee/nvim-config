@@ -51,10 +51,12 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
--- Format on save
-vim.api.nvim_create_autocmd("BufWritePre", {
-    buffer = buffer,
+-- Set tabs to two spaces in some filetypes
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "ts", "js", "css" },
     callback = function()
-        vim.lsp.buf.format({ async = false })
+        vim.opt.shiftwidth = 2
+        vim.opt.expandtab = true
+        vim.bo.softtabstop = 2
     end,
 })
