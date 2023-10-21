@@ -48,40 +48,15 @@ return {
         "echasnovski/mini.surround",
         opts = {
             mappings = {
-                add = "gza",            -- Add surrounding in Normal and Visual modes
-                delete = "gzd",         -- Delete surrounding
-                find = "gzf",           -- Find surrounding (to the right)
-                find_left = "gzF",      -- Find surrounding (to the left)
-                highlight = "gzh",      -- Highlight surrounding
-                replace = "gzr",        -- Replace surrounding
+                add = "gza", -- Add surrounding in Normal and Visual modes
+                delete = "gzd", -- Delete surrounding
+                find = "gzf", -- Find surrounding (to the right)
+                find_left = "gzF", -- Find surrounding (to the left)
+                highlight = "gzh", -- Highlight surrounding
+                replace = "gzr", -- Replace surrounding
                 update_n_lines = "gzn", -- Update `n_lines`
             },
             n_lines = 300,
-        },
-    },
-    {
-        "echasnovski/mini.files",
-        lazy = false,
-        keys = {
-            {
-                "<leader>e",
-                function()
-                    require("mini.files").open(vim.api.nvim_buf_get_name(0), true)
-                end,
-                desc = "Open mini.files (directory of current file)",
-            },
-            {
-                "<leader>E",
-                function()
-                    require("mini.files").open(vim.loop.cwd(), true)
-                end,
-                desc = "Open mini.files (cwd)",
-            },
-        },
-        opts = {
-            options = {
-                use_as_default_explorer = true,
-            },
         },
     },
 }
