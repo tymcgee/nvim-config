@@ -10,7 +10,7 @@ return {
             python = { "black" },
             go = { "gofumpt" },
             json = { { "fixjson", "jq", "prettierd" } },
-            yaml = { { "yamlfix", "yamlformat" } },
+            yaml = { "yamlfix" },
             sh = { "shfmt" },
             css = { "prettierd" },
             scss = { "prettierd" },

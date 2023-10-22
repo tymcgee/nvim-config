@@ -58,6 +58,14 @@ return {
             lspconfig[server].setup({})
         end
 
+        local install_tool = function(tool)
+            local mr = require("mason-registry")
+            local p = mr.get_package(tool)
+            if not p:is_installed() then
+                p:install()
+            end
+        end
+
         local servers = {
             "lua_ls",
             "rust_analyzer",
@@ -67,7 +75,17 @@ return {
             "svelte",
             "tsserver",
             "gopls",
-            -- "templ",
+        }
+
+        local tools = {
+            "black",
+            "djlint",
+            "fixjson",
+            "gofumpt",
+            "prettierd",
+            "shfmt",
+            "stylua",
+            "yamlfix",
         }
 
         -- LSP CONFIG
@@ -78,6 +96,10 @@ return {
 
         for _, server in ipairs(servers) do
             default_setup(server)
+        end
+
+        for _, tool in ipairs(tools) do
+            install_tool(tool)
         end
 
         lspconfig.html.setup({
@@ -107,7 +129,5 @@ return {
                 },
             },
         })
-
-        -- lspconfig.templ.setup({ filetypes = { "html", "gohtml" } })
     end,
 }
