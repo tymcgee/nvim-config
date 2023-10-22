@@ -34,7 +34,8 @@ vim.api.nvim_create_autocmd("FileType", {
         "checkhealth",
         "neotest-summary",
         "neotest-output-panel",
-        "sagacodeaction",
+        "saga_code_action",
+        "sagarename",
     },
     callback = function(event)
         vim.bo[event.buf].buflisted = false
