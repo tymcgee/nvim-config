@@ -51,13 +51,3 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt_local.spell = true
     end,
 })
-
--- Set tabs to two spaces in some filetypes
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "ts", "js", "css" },
-    callback = function()
-        vim.opt.shiftwidth = 2
-        vim.opt.expandtab = true
-        vim.bo.softtabstop = 2
-    end,
-})
