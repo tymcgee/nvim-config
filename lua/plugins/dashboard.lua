@@ -22,7 +22,7 @@ return {
                     { action = "Telescope oldfiles", desc = " Recent files", icon = " ", key = "r" },
                     { action = "Telescope live_grep", desc = " Find text", icon = " ", key = "g" },
                     {
-                        action = "cd ~/.config/nvim | SessionManager load_current_dir_session",
+                        action = "cd ~/.config/nvim | e init.lua | SessionManager load_current_dir_session",
                         desc = " Config",
                         icon = " ",
                         key = "c",
