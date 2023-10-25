@@ -75,6 +75,7 @@ return {
             "svelte",
             "tsserver",
             "gopls",
+            "cssls",
         }
 
         local tools = {
