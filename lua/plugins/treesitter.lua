@@ -44,6 +44,9 @@ return {
                     "sql",
                     "css",
                     "scss",
+                    "go",
+                    "http",
+                    "svelte",
                 },
                 context_commentstring = {
                     enable = true,
