@@ -77,6 +77,7 @@ return {
             "tsserver",
             "gopls",
             "cssls",
+            "templ",
         }
 
         local tools = {
