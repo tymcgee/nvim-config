@@ -67,17 +67,19 @@ return {
             end
         end
 
+        -- NOTE: these are lspconfig names, not mason names
         local servers = {
             "lua_ls",
             "rust_analyzer",
+            "gopls",
             "pyright",
+            "bashls",
             "html",
             "jsonls",
             "svelte",
             "tsserver",
-            "gopls",
             "cssls",
-            "templ",
+            "tailwindcss",
         }
 
         local tools = {
@@ -93,11 +95,13 @@ return {
 
         -- LSP CONFIG
         require("mason").setup({})
-        require("mason-lspconfig").setup({
+        local mason_lspconfig = require("mason-lspconfig")
+        mason_lspconfig.setup({
             ensure_installed = servers,
         })
 
-        for _, server in ipairs(servers) do
+        local installed_servers = mason_lspconfig.get_installed_servers()
+        for _, server in ipairs(installed_servers) do
             default_setup(server)
         end
 
