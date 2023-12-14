@@ -47,10 +47,17 @@ return {
                     "go",
                     "http",
                     "svelte",
+                    "templ",
+                    "just",
                 },
             })
         end,
     },
 
     { "nvim-treesitter/nvim-treesitter-context", config = true },
+
+    {
+        "IndianBoy42/tree-sitter-just",
+        config = true,
+    },
 }
