@@ -48,10 +48,6 @@ return {
                     "http",
                     "svelte",
                 },
-                context_commentstring = {
-                    enable = true,
-                    enable_autocmd = false,
-                },
             })
         end,
     },
