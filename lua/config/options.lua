@@ -40,6 +40,12 @@ vim.opt.sessionoptions = vim.opt.sessionoptions + "globals"
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
 
+vim.filetype.add({
+    extension = {
+        templ = "templ",
+    },
+})
+
 local signs = {
     Error = " ",
     Information = " ",
