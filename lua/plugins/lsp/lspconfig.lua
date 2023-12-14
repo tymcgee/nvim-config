@@ -136,5 +136,17 @@ return {
                 },
             },
         })
+
+        lspconfig.tailwindcss.setup({
+            -- defaults include a lot more, but it doesn't seem like this overrides the defaults
+            filetypes = {
+                "templ",
+            },
+            init_options = {
+                userLanguages = {
+                    templ = "html",
+                },
+            },
+        })
     end,
 }
