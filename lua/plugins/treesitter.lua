@@ -48,7 +48,6 @@ return {
                     "http",
                     "svelte",
                     "templ",
-                    "just",
                 },
             })
         end,
