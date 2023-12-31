@@ -149,5 +149,9 @@ return {
                 },
             },
         })
+
+        lspconfig.htmx.setup({
+            filetypes = { "html", "templ" },
+        })
     end,
 }
