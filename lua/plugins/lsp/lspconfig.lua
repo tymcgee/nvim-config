@@ -110,6 +110,7 @@ return {
         end
 
         lspconfig.html.setup({
+            filetypes = { "html", "templ" },
             settings = {
                 html = {
                     format = {
