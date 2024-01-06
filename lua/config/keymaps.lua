@@ -3,18 +3,7 @@ local map = vim.keymap.set
 map("n", "<c-d>", "<c-d>zz")
 map("n", "<c-u>", "<c-u>zz")
 
-map("n", "<c-h>", "<cmd>TmuxNavigateLeft<cr>")
-map("n", "<c-j>", "<cmd>TmuxNavigateDown<cr>")
-map("n", "<c-k>", "<cmd>TmuxNavigateUp<cr>")
-map("n", "<c-l>", "<cmd>TmuxNavigateRight<cr>")
-
 map({ "n", "v" }, "<leader>y", '"+y', { desc = "Copy to clipboard" })
-
--- Buffer management
-map("n", "<s-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
-map("n", "<s-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Previous buffer" })
-map("n", "<A-v>", "<cmd>BufferLineMoveNext<cr>", { desc = "Move buffer to the right" })
-map("n", "<A-c>", "<cmd>BufferLineMovePrev<cr>", { desc = "Move buffer to the left" })
 
 -- Clear search with <esc>
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
@@ -24,22 +13,11 @@ map("i", ",", ",<c-g>u")
 map("i", ".", ".<c-g>u")
 map("i", ";", ";<c-g>u")
 
--- better indenting
-map("v", "<", "<gv")
-map("v", ">", ">gv")
-
 -- lazy
 map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
 -- new file
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
-
--- TODO: lazygit (or learn how to use a real git plugin or something)
--- map("n", "<leader>gg", function() Util.float_term({ "lazygit" }, { cwd = Util.get_root(), esc_esc = false, ctrl_hjkl = false }) end, { desc = "Lazygit (root dir)" })
--- map("n", "<leader>gG", function() Util.float_term({ "lazygit" }, {esc_esc = false, ctrl_hjkl = false}) end, { desc = "Lazygit (cwd)" })
-
--- quit
-map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 
 -- Normal mode in terminal
 map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
