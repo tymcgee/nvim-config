@@ -24,5 +24,6 @@ return {
             lsp_fallback = true,
             async = true,
         },
+        notify_on_error = false,
     },
 }
