@@ -1,0 +1,31 @@
+snippet cs case
+	case ${1:value}:
+		${0:${VISUAL}}
+
+
+snippet hand http handler
+	func $1(w http.ResponseWriter, r *http.Request) {
+		$0
+	}
+
+snippet pf fmt.Printf()
+	fmt.Printf("${1:%s}\n", ${0:var})
+
+snippet pr fmt.Print()
+	fmt.Print("$0")
+
+snippet lf log.Printf()
+	log.Printf("${1:%s}", ${0:var})
+
+snippet test test function
+	func Test${1:name}(t *testing.T) {
+		${0:${VISUAL}}
+	}
+
+snippet er handle error
+	if err != nil {
+		$0
+	}
+
+snippet jsn Json struct mapping
+	\`json:"$1"\`

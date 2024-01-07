@@ -1,17 +1,15 @@
 return {
     "L3MON4D3/LuaSnip",
     event = "VeryLazy",
-    dependencies = {
-        "rafamadriz/friendly-snippets",
-        config = function()
-            require("luasnip.loaders.from_vscode").lazy_load()
-            require("luasnip.loaders.from_lua").lazy_load()
-            require("luasnip").setup({
-                region_check_events = "InsertEnter",
-                delete_check_events = "InsertLeave",
-            })
-        end,
-    },
+    version = "v2.*",
+    build = "make install_jsregexp",
+    config = function()
+        require("luasnip.loaders.from_snipmate").lazy_load()
+        require("luasnip").setup({
+            region_check_events = "InsertEnter",
+            delete_check_events = "InsertLeave",
+        })
+    end,
     keys = {
         {
             "<tab>",
