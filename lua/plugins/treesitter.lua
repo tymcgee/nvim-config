@@ -1,9 +1,12 @@
 return {
     {
+        { "nvim-treesitter/nvim-treesitter-context", config = true },
+
         "nvim-treesitter/nvim-treesitter",
         dependencies = {
             "JoosepAlviste/nvim-ts-context-commentstring",
         },
+        build = ":TSUpdate",
         config = function()
             require("nvim-treesitter.configs").setup({
                 -- not sure why i have to specify all of these even though they're mentioned as defaults...
@@ -51,12 +54,5 @@ return {
                 },
             })
         end,
-    },
-
-    { "nvim-treesitter/nvim-treesitter-context", config = true },
-
-    {
-        "IndianBoy42/tree-sitter-just",
-        config = true,
     },
 }
