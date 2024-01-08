@@ -42,7 +42,6 @@
   "plenary.nvim": { "branch": "master", "commit": "55d9fe89e33efd26f532ef20223e5f9430c8b0c0" },
   "rest.nvim": { "branch": "main", "commit": "8b62563cfb19ffe939a260504944c5975796a682" },
   "statuscol.nvim": { "branch": "main", "commit": "3b629754420919575a9e5758027d6e1831dbf2aa" },
-  "telescope-ui-select.nvim": { "branch": "master", "commit": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2" },
   "telescope.nvim": { "branch": "master", "commit": "87e92ea31b2b61d45ad044cf7b2d9b66dad2a618" },
   "todo-comments.nvim": { "branch": "main", "commit": "4a6737a8d70fe1ac55c64dfa47fcb189ca431872" },
   "toggleterm.nvim": { "branch": "main", "commit": "cbd041d91b90cd3c02df03fe6133208888f8e008" },
