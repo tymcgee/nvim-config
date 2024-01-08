@@ -80,6 +80,7 @@ return {
             "djlint",
             "fixjson",
             "gofumpt",
+            "goimports",
             "prettierd",
             "shfmt",
             "stylua",

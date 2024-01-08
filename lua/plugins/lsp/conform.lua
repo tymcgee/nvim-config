@@ -8,7 +8,7 @@ return {
         formatters_by_ft = {
             lua = { "stylua" },
             python = { "black" },
-            go = { "gofumpt" },
+            go = { "goimports", "gofumpt" },
             json = { { "fixjson", "jq", "prettierd" } },
             yaml = { "yamlfix" },
             sh = { "shfmt" },
