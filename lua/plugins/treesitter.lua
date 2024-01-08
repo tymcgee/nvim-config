@@ -55,6 +55,7 @@ return {
                         "css",
                         "scss",
                         "go",
+                        "gomod",
                         "http",
                         "svelte",
                         "templ",
