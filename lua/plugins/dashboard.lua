@@ -1,5 +1,6 @@
 return {
     "nvimdev/dashboard-nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     event = "VimEnter",
     opts = function()
         local logo = vim.fn.system({ "cat", vim.fn.stdpath("config") .. "/logo.txt" })
@@ -50,7 +51,18 @@ return {
                 footer = {},
             },
         }
+
+        -- close Lazy and re-open when the dashboard is ready
+        if vim.o.filetype == "lazy" then
+            vim.cmd.close()
+            vim.api.nvim_create_autocmd("User", {
+                pattern = "DashboardLoaded",
+                callback = function()
+                    require("lazy").show()
+                end,
+            })
+        end
+
         return opts
     end,
-    dependencies = { { "nvim-tree/nvim-web-devicons" } },
 }
