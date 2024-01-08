@@ -36,6 +36,7 @@ vim.api.nvim_create_autocmd("FileType", {
         "neotest-output-panel",
         "saga_code_action",
         "sagarename",
+        "toggleterm",
     },
     callback = function(event)
         vim.bo[event.buf].buflisted = false

@@ -1,11 +1,11 @@
 return {
     "klen/nvim-test",
     keys = {
-        { "<leader>rt", "<cmd>TestSuite<cr>", desc = "Run Tests" },
+        { "<leader>ta", "<cmd>TestSuite<cr>", desc = "Run tests" },
+        { "<leader>tf", "<cmd>TestFile<cr>", desc = "Run tests in file" },
     },
-    -- TODO: make it so that pressing q after a test closes it immediately
-    -- right now, you have to enter insert mode in order to do that
     opts = {
+        term = "toggleterm",
         termOpts = {
             direction = "float",
         },

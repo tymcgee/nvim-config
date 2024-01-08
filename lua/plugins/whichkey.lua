@@ -13,6 +13,7 @@ return {
             ["<leader>f"] = { name = "+files" },
             ["<leader>q"] = { name = "+quit" },
             ["<leader>r"] = { name = "+run" },
+            ["<leader>t"] = { name = "+test" },
         },
     },
     config = function(_, opts)
