@@ -10,7 +10,7 @@ return {
                 insert_only = false,
             },
             select = {
-                telescope = themes.get_dropdown({ initial_mode = "normal" }),
+                -- telescope = themes.get_dropdown({ initial_mode = "normal" }),
                 -- override for the code action selection window
                 get_config = function(opts)
                     if opts.kind == "codeaction" then
