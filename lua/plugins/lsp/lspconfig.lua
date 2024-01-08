@@ -10,17 +10,11 @@ return {
         },
         { "williamboman/mason-lspconfig.nvim" },
 
-        -- Other tools
-        { "nvimdev/lspsaga.nvim", config = true },
         { "stevearc/conform.nvim" },
+        { "nvim-telescope/telescope.nvim" },
     },
 
     config = function()
-        local map = function(modes, bind, action, desc, buf)
-            local opts = { buffer = buf, desc = desc }
-            vim.keymap.set(modes, bind, action, opts)
-        end
-
         -- LSP KEYBINDINGS
         local lspconfig = require("lspconfig")
         local lsp_defaults = lspconfig.util.default_config
@@ -28,30 +22,29 @@ return {
         -- globals
         vim.keymap.set("n", "<leader>clr", "<cmd>LspRestart<cr>", { desc = "Restart LSP" })
         vim.keymap.set("n", "<leader>cli", "<cmd>LspInfo<cr>", { desc = "LSP Info" })
-        vim.keymap.set("n", "<leader>ft", "<cmd>Lspsaga term_toggle<cr>", { desc = "Toggle a terminal popup" })
-        vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>", { desc = "Go to prev diagnostic" })
-        vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>", { desc = "Go to next diagnostic" })
+        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to prev diagnostic" })
+        vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+        vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Open diagnostic float" })
 
-        lsp_defaults.capabilities =
-            vim.tbl_deep_extend("force", lsp_defaults.capabilities, require("cmp_nvim_lsp").default_capabilities())
+        -- stylua: ignore
+        lsp_defaults.capabilities = vim.tbl_deep_extend("force", lsp_defaults.capabilities, require("cmp_nvim_lsp").default_capabilities())
 
         vim.api.nvim_create_autocmd("LspAttach", {
             desc = "LSP Actions",
             callback = function(event)
-                local buf = event.buf
-                map("n", "K", "<cmd>Lspsaga hover_doc<cr>", "Hover", buf)
-                map("n", "gd", "<cmd>Lspsaga goto_definition<cr>", "Go to definition", buf)
-                map("n", "gD", "<cmd>Lspsaga peek_definition<cr>", "Peek definition", buf)
-                map("n", "gr", "<cmd>Lspsaga finder ref+def+imp<cr>", "Go to references", buf)
-                map("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature help", buf)
-                map("n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<cr>", "Go to type definition", buf)
-                map("n", "<leader>cr", "<cmd>Lspsaga rename<cr>", "Rename", buf)
-                map("n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", "Code actions", buf)
+                -- note: for stuff like definition/references/types/etc, see the telescope config file
+                -- stylua: ignore start
+                vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover", buffer = event.buf })
+                vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { desc = "Go to type definition", buffer = event.buf })
+                vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { desc = "Signature help", buffer = event.buf })
+                vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename", buffer = event.buf })
+                -- note: this uses telescope via the telescope-ui-select plugin
+                vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code actions", buffer = event.buf })
 
-                map("n", "gl", "<cmd>Lspsaga show_line_diagnostics<cr>", "Open diagnostic float", buf)
-                map({ "n", "x" }, "<leader>cf", function()
-                    require("conform").format({ async = true, lsp_fallback = true })
-                end, "Format document", buf)
+                vim.keymap.set({"n", "x"}, "<leader>cf", function()
+                    require("conform").format({async = true, lsp_fallback = true})
+                end, {desc = "Format document", buffer = event.buf})
+                -- stylua: ignore end
             end,
         })
 
