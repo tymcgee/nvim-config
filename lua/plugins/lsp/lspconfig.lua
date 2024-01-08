@@ -12,6 +12,7 @@ return {
 
         { "stevearc/conform.nvim" },
         { "nvim-telescope/telescope.nvim" },
+        { "folke/neodev.nvim", opts = {} },
     },
 
     config = function()
