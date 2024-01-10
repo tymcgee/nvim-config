@@ -54,6 +54,7 @@ return {
                         "sql",
                         "css",
                         "scss",
+                        "html",
                         "go",
                         "gomod",
                         "http",
