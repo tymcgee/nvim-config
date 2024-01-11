@@ -1,6 +1,7 @@
 return {
     {
         "ggandor/leap.nvim",
+        enabled = false,
         keys = {
             { "s", mode = { "n", "x", "o" }, desc = "Leap forward to" },
             { "S", mode = { "n", "x", "o" }, desc = "Leap backward to" },
@@ -13,6 +14,7 @@ return {
     },
     {
         "ggandor/flit.nvim",
+        enabled = false,
         keys = function()
             local ret = {}
             for _, key in ipairs({ "f", "F", "t", "T" }) do

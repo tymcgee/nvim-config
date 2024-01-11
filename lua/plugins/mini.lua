@@ -1,11 +1,15 @@
 return {
+
     {
-        "echasnovski/mini.ai",
-        config = true,
-    },
-    {
-        "echasnovski/mini.comment",
+        "echasnovski/mini.nvim",
+        version = false,
         config = function()
+            -- setup
+            require("mini.ai").setup()
+            require("mini.cursorword").setup()
+            require("mini.move").setup()
+            require("mini.bufremove").setup()
+            require("mini.surround").setup()
             require("mini.comment").setup({
                 options = {
                     custom_commentstring = function()
@@ -13,49 +17,12 @@ return {
                     end,
                 },
             })
+
+            -- keymaps
+            -- stylua: ignore start
+            vim.keymap.set("n", "<s-q>", MiniBufremove.delete, { desc = "Delete buffer" })
+            vim.keymap.set("n", "<leader>bD", function() MiniBufremove.delete(0, true) end, { desc = "Force delete buffer" })
+            -- stylua: ignore end
         end,
-    },
-    {
-        "echasnovski/mini.cursorword",
-        config = true,
-    },
-    {
-        "echasnovski/mini.move",
-        config = true,
-    },
-    {
-        "echasnovski/mini.bufremove",
-        keys = {
-            {
-                "<s-q>",
-                function()
-                    require("mini.bufremove").delete()
-                end,
-                desc = "Delete Buffer",
-            },
-            {
-                "<leader>bD",
-                function()
-                    require("mini.bufremove").delete(0, true)
-                end,
-                desc = "Force Delete Buffer",
-            },
-        },
-        config = true,
-    },
-    {
-        "echasnovski/mini.surround",
-        opts = {
-            mappings = {
-                add = "gza", -- Add surrounding in Normal and Visual modes
-                delete = "gzd", -- Delete surrounding
-                find = "gzf", -- Find surrounding (to the right)
-                find_left = "gzF", -- Find surrounding (to the left)
-                highlight = "gzh", -- Highlight surrounding
-                replace = "gzr", -- Replace surrounding
-                update_n_lines = "gzn", -- Update `n_lines`
-            },
-            n_lines = 300,
-        },
     },
 }
