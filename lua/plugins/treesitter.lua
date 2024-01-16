@@ -60,6 +60,7 @@ return {
                         "http",
                         "svelte",
                         "templ",
+                        "vimdoc",
                     },
                 })
             end,
