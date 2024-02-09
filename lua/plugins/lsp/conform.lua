@@ -9,6 +9,7 @@ return {
             lua = { "stylua" },
             python = { "black" },
             go = { "goimports", "gofumpt" },
+            templ = { "templ" },
             json = { { "fixjson", "jq", "prettierd" } },
             yaml = { "yamlfix" },
             sh = { "shfmt" },
