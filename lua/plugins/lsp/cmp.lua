@@ -14,10 +14,12 @@ return {
         cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
         cmp.setup({
-            -- Uncomment this to auto-select the first item
             completion = {
+                -- auto-select the first item
                 completeopt = "menu,menuone,noinsert",
             },
+            -- don't allow LSPs to preselect a dropdown option
+            preselect = "None",
             snippet = {
                 expand = function(args)
                     require("luasnip").lsp_expand(args.body)
@@ -43,11 +45,27 @@ return {
                 }),
             }),
             sources = cmp.config.sources({
-                { name = "nvim_lsp" },
                 { name = "luasnip" },
+                { name = "nvim_lsp" },
                 { name = "buffer" },
                 { name = "path" },
             }),
+            sorting = {
+                priority_weight = 1,
+                comparators = {
+                    -- cmp.config.compare.score_offset, -- not good at all
+                    cmp.config.compare.exact,
+                    cmp.config.compare.locality,
+                    cmp.config.compare.recently_used,
+                    cmp.config.compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
+                    cmp.config.compare.offset,
+                    cmp.config.compare.order,
+                    -- cmp.config.compare.scopes, -- what?
+                    -- cmp.config.compare.sort_text,
+                    -- cmp.config.compare.kind,
+                    -- cmp.config.compare.length, -- useless
+                },
+            },
         })
     end,
 }
