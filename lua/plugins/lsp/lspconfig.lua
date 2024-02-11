@@ -86,6 +86,7 @@ return {
             "shfmt",
             "stylua",
             "yamlfix",
+            "golangci-lint",
         }
 
         -- LSP CONFIG
