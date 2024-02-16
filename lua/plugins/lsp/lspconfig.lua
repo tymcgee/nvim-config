@@ -78,7 +78,6 @@ return {
 
         local tools = {
             "black",
-            "djlint",
             "fixjson",
             "gofumpt",
             "goimports",

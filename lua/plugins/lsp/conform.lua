@@ -15,7 +15,7 @@ return {
             sh = { "shfmt" },
             css = { "prettierd" },
             scss = { "prettierd" },
-            html = { "prettierd", "djlint" },
+            html = { "prettierd" },
             javascript = { "prettierd" },
             typescript = { "prettierd" },
             svelte = { "prettierd" },
