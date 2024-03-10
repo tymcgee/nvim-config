@@ -81,7 +81,7 @@ return {
             "fixjson",
             "gofumpt",
             "goimports",
-            "prettierd",
+            "prettier",
             "shfmt",
             "stylua",
             "yamlfix",
