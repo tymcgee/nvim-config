@@ -66,7 +66,7 @@ return {
             "lua_ls",
             "rust_analyzer",
             "gopls",
-            "pyright",
+            "basedpyright",
             "bashls",
             "html",
             "jsonls",
@@ -147,6 +147,14 @@ return {
 
         lspconfig.htmx.setup({
             filetypes = { "html", "templ" },
+        })
+
+        lspconfig.basedpyright.setup({
+            settings = {
+                basedpyright = {
+                    typeCheckingMode = "standard",
+                },
+            },
         })
     end,
 }
