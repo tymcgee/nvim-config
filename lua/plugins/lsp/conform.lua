@@ -22,11 +22,12 @@ return {
                     typescript = { "prettier" },
                     svelte = { "prettier" },
                 },
-                format_on_save = {
-                    timeout_ms = 500,
-                    lsp_fallback = true,
-                    async = true,
-                },
+                format_on_save = function(bufnr)
+                    if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+                        return
+                    end
+                    return { timeout_ms = 500, lsp_fallback = true, async = true }
+                end,
                 notify_on_error = false,
                 formatters = {
                     prettier = {
@@ -34,6 +35,20 @@ return {
                     },
                 },
             })
+
+            vim.api.nvim_create_user_command("FormatToggle", function(args)
+                if args.bang then
+                    -- FormatToggle! will toggle just for this buffer
+                    vim.b.disable_autoformat = not vim.b.disable_autoformat
+                else
+                    vim.g.disable_autoformat = not vim.g.disable_autoformat
+                end
+            end, {
+                desc = "Toggle autoformat-on-save",
+                bang = true,
+            })
+
+            vim.keymap.set("n", "<leader>cd", "<cmd>FormatToggle<cr>", { desc = "Toggle format on save" })
         end,
     },
     {
