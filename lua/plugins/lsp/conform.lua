@@ -22,11 +22,11 @@ return {
                     typescript = { "prettier" },
                     svelte = { "prettier" },
                 },
-                -- format_on_save = {
-                --     timeout_ms = 500,
-                --     lsp_fallback = true,
-                --     async = true,
-                -- },
+                format_on_save = {
+                    timeout_ms = 500,
+                    lsp_fallback = true,
+                    async = true,
+                },
                 notify_on_error = false,
                 formatters = {
                     prettier = {
@@ -41,7 +41,7 @@ return {
         dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-lua/plenary.nvim" },
         build = "cd formatter && npm i && npm run build",
         opts = {
-            on_save_enabled = false,
+            on_save_enabled = true,
         },
     },
 }
