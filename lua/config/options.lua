@@ -43,6 +43,7 @@ vim.g.markdown_recommended_style = 0
 vim.filetype.add({
     extension = {
         templ = "templ",
+        tmpl = "html",
     },
 })
 
