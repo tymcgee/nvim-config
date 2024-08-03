@@ -3,22 +3,25 @@ return {
     event = "VeryLazy",
     opts = {
         plugins = { spelling = true },
-        defaults = {
-            mode = { "n", "v" },
-            ["g"] = { name = "+goto" },
-            ["gz"] = { name = "+surround" },
-            ["<leader>c"] = { name = "+code" },
-            ["<leader>g"] = { name = "+git" },
-            ["<leader>s"] = { name = "+search" },
-            ["<leader>f"] = { name = "+files" },
-            ["<leader>q"] = { name = "+quit" },
-            ["<leader>r"] = { name = "+run" },
-            ["<leader>t"] = { name = "+test" },
-        },
+        preset = "helix",
     },
     config = function(_, opts)
         local wk = require("which-key")
         wk.setup(opts)
-        wk.register(opts.defaults)
+        wk.add({
+            {
+                mode = { "n", "v" },
+                { "<leader>c", group = "code" },
+                { "<leader>f", group = "files" },
+                { "<leader>g", group = "git" },
+                { "<leader>q", group = "quit" },
+                { "<leader>r", group = "run" },
+                { "<leader>s", group = "search" },
+                { "<leader>t", group = "test" },
+                { "<leader>b", group = "buffer" },
+                { "g", group = "goto" },
+                { "gz", group = "surround" },
+            },
+        })
     end,
 }

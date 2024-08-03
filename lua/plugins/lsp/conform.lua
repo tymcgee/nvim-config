@@ -5,14 +5,12 @@ return {
         "stevearc/conform.nvim",
         config = function()
             require("conform").setup({
-                -- sub-list means "use the first one you find"
-                -- list means "use one after the other"
                 formatters_by_ft = {
                     lua = { "stylua" },
                     python = { "black" },
                     go = { "goimports", "gofumpt" },
                     templ = { "templ" },
-                    json = { { "fixjson", "jq", "prettier" } },
+                    json = { "fixjson", "jq", "prettier", stop_after_first = true },
                     yaml = { "yamlfix" },
                     sh = { "shfmt" },
                     css = { "prettier" },

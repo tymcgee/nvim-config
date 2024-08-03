@@ -12,7 +12,7 @@ return {
 
         { "stevearc/conform.nvim" },
         { "nvim-telescope/telescope.nvim" },
-        { "folke/neodev.nvim", opts = {} },
+        { "folke/lazydev.nvim", ft = "lua", opts = {} },
     },
 
     config = function()
