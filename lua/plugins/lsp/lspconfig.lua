@@ -145,10 +145,6 @@ return {
             },
         })
 
-        lspconfig.htmx.setup({
-            filetypes = { "html", "templ" },
-        })
-
         lspconfig.basedpyright.setup({
             settings = {
                 basedpyright = {
