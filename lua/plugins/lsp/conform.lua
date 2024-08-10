@@ -46,6 +46,7 @@ return {
                 bang = true,
             })
 
+            vim.g.disable_autoformat = true
             vim.keymap.set("n", "<leader>cd", "<cmd>FormatToggle<cr>", { desc = "Toggle format on save" })
         end,
     },
