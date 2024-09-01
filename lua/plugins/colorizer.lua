@@ -12,6 +12,9 @@ return {
         server = {
             enabled = false,
         },
+        conceal = {
+            enabled = true
+        },
         cmp = {
             highlight = "background",
         },
