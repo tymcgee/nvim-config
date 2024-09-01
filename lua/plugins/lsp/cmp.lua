@@ -6,6 +6,8 @@ return {
         { "hrsh7th/cmp-path" },
         { "L3MON4D3/LuaSnip" },
         { "saadparwaiz1/cmp_luasnip" },
+        { "luckasRanarison/tailwind-tools.nvim" },
+        { "onsails/lspkind.nvim" }, -- symbols in dropdown
     },
 
     config = function()
@@ -17,6 +19,12 @@ return {
             completion = {
                 -- auto-select the first item
                 completeopt = "menu,menuone,noinsert",
+            },
+            -- colorize tailwind colors
+            formatting = {
+                format = require("lspkind").cmp_format({
+                    before = require("tailwind-tools.cmp").lspkind_format
+                })
             },
             -- don't allow LSPs to preselect a dropdown option
             preselect = "None",
