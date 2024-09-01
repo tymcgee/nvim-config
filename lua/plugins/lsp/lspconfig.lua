@@ -74,6 +74,7 @@ return {
             "tsserver",
             "cssls",
             "tailwindcss",
+            "emmet_language_server",
         }
 
         local tools = {
@@ -145,6 +146,11 @@ return {
             },
         })
 
+        lspconfig.emmet_language_server.setup({
+            filetypes = {
+                "templ",
+            },
+        })
         lspconfig.basedpyright.setup({
             settings = {
                 basedpyright = {
