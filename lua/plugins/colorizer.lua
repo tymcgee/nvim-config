@@ -12,8 +12,8 @@ return {
         server = {
             enabled = false,
         },
-        conceal = {
-            enabled = true
+        document_color = {
+            enabled = false,
         },
         cmp = {
             highlight = "background",
