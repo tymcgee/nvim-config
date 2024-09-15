@@ -9,6 +9,7 @@ return {
             require("mini.cursorword").setup()
             require("mini.move").setup()
             require("mini.bufremove").setup()
+            vim.keymap.set({"n", "x"}, "s", "<Nop>")
             require("mini.surround").setup()
             require("mini.comment").setup({
                 options = {

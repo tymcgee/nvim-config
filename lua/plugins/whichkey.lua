@@ -19,8 +19,9 @@ return {
                 { "<leader>s", group = "search" },
                 { "<leader>t", group = "test" },
                 { "<leader>b", group = "buffer" },
+                -- doesn't work..
+                { "s", group = "surround" },
                 { "g", group = "goto" },
-                { "gz", group = "surround" },
             },
         })
     end,
