@@ -24,7 +24,12 @@ return {
             formatting = {
                 format = require("lspkind").cmp_format({
                     before = require("tailwind-tools.cmp").lspkind_format
-                })
+                }),
+            },
+            window = {
+                completion = {
+                    winhighlight = "CursorLine:Visual",
+                },
             },
             -- don't allow LSPs to preselect a dropdown option
             preselect = "None",
