@@ -71,7 +71,7 @@ return {
             "html",
             "jsonls",
             "svelte",
-            "tsserver",
+            "ts_ls",
             "cssls",
             "tailwindcss",
             "emmet_language_server",
