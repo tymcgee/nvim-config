@@ -16,6 +16,11 @@ return {
                     return name == ".git"
                 end,
             },
+            keymaps = {
+                -- don't conflict with tmux navigator
+                ["<C-l>"] = false,
+                ["<C-h>"] = false,
+            },
         })
 
         vim.api.nvim_create_autocmd("FileType", {
