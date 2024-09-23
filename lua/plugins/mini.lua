@@ -9,8 +9,18 @@ return {
             require("mini.cursorword").setup()
             require("mini.move").setup()
             require("mini.bufremove").setup()
-            vim.keymap.set({"n", "x"}, "s", "<Nop>")
-            require("mini.surround").setup()
+            require("mini.surround").setup({
+                mappings = {
+                    add = "ysa", -- Add surrounding in Normal and Visual modes
+                    delete = "ysd", -- Delete surrounding
+                    replace = "ysc", -- Change (replace) surrounding
+                    -- disabled, I don't use them
+                    find = "", -- Find surrounding (to the right)
+                    find_left = "", -- Find surrounding (to the left)
+                    highlight = "", -- Highlight surrounding
+                    update_n_lines = "", -- Update `n_lines`
+                },
+            })
             require("mini.comment").setup({
                 options = {
                     custom_commentstring = function()

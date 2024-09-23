@@ -17,10 +17,8 @@ return {
                 { "<leader>q", group = "quit" },
                 { "<leader>r", group = "run" },
                 { "<leader>s", group = "search" },
-                -- { "<leader>t", group = "test" },
                 { "<leader>b", group = "buffer" },
-                -- doesn't work..
-                { "s", group = "surround" },
+                { "s", group = "substitute" },
                 { "g", group = "goto" },
             },
         })

@@ -37,6 +37,7 @@
   "onedark.nvim": { "branch": "master", "commit": "fae34f7c635797f4bf62fb00e7d0516efa8abe37" },
   "plenary.nvim": { "branch": "master", "commit": "ec289423a1693aeae6cd0d503bac2856af74edaa" },
   "statuscol.nvim": { "branch": "main", "commit": "1022f922b77b44c36f8057ac29adbfd89ce86958" },
+  "substitute.nvim": { "branch": "main", "commit": "97f49d16f8eea7967d41db4f657dd63af53eeba1" },
   "tailwind-sorter.nvim": { "branch": "main", "commit": "e03eea3909c28509375993fb77a42454ac8ecbb2" },
   "tailwind-tools": { "branch": "master", "commit": "a67d4b20eff105fbc234eea227682d15999a7733" },
   "telescope.nvim": { "branch": "master", "commit": "927c10f748e49c543b2d544c321a1245302ff324" },
