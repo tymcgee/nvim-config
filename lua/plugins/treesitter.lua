@@ -16,15 +16,6 @@ return {
             build = ":TSUpdate",
             config = function()
                 require("nvim-treesitter.configs").setup({
-                    -- not sure why i have to specify all of these even though they're mentioned as defaults...
-                    -- but it wasn't working in svelte files unless i did
-                    autotag = {
-                        enable = true,
-                        enable_rename = true,
-                        enable_close = true,
-                        enable_close_on_slash = true,
-                        filetypes = { "html", "xml", "svelte", "markdown", "javascript", "typescript", "templ" },
-                    },
                     highlight = {
                         enable = true,
                     },
