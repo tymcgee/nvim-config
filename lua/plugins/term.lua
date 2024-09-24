@@ -2,7 +2,7 @@ return {
     "akinsho/toggleterm.nvim",
     version = "*",
     config = function()
-        vim.keymap.set("n", "<leader>ft", "<cmd>ToggleTerm direction=float<cr>")
+        vim.keymap.set("n", "<leader>tf", "<cmd>ToggleTerm direction=float<cr>")
         vim.keymap.set({ "n", "t" }, "<leader>tt", "<cmd>ToggleTerm<cr>")
         local shell = vim.fn.exepath("bash")
         if vim.fn.executable("fish") == 1 then
