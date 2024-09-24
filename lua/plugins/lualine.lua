@@ -15,8 +15,8 @@ return {
                 component_separators = "",
             },
             sections = {
-                lualine_c = { arrow, "filename" },
-                lualine_x = { "filetype" },
+                lualine_c = { arrow, "filetype", "filename" },
+                lualine_x = { "" },
             },
         }
     end,
