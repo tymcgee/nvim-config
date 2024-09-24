@@ -36,6 +36,7 @@ return {
                 -- note: for stuff like definition/references/types/etc, see the telescope config file
                 -- stylua: ignore start
                 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover", buffer = event.buf })
+                vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition", buffer = event.buf })
                 vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { desc = "Go to type definition", buffer = event.buf })
                 vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { desc = "Signature help", buffer = event.buf })
                 vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename", buffer = event.buf })

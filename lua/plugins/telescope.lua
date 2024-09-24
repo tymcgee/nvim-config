@@ -25,7 +25,6 @@ return {
 
             -- lsp stuff
             -- stylua: ignore start
-            vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions theme=cursor<cr>", { desc = "Go to definition(s)" })
             vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references theme=cursor<cr>", { desc = "Go to references" })
             vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations theme=cursor<cr>", { desc = "Go to implementation(s)" })
             vim.keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions theme=cursor<cr>", { desc = "Go to type(s)" })
