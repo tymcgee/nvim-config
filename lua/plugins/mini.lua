@@ -11,14 +11,14 @@ return {
             require("mini.bufremove").setup()
             require("mini.surround").setup({
                 mappings = {
-                    add = "ysa", -- Add surrounding in Normal and Visual modes
-                    delete = "ysd", -- Delete surrounding
-                    replace = "ysc", -- Change (replace) surrounding
+                    add = "ys", -- Add surrounding in Normal and Visual modes
+                    delete = "ds", -- Delete surrounding
+                    replace = "cs", -- Change (replace) surrounding
                     -- disabled, I don't use them
-                    find = "", -- Find surrounding (to the right)
-                    find_left = "", -- Find surrounding (to the left)
-                    highlight = "", -- Highlight surrounding
-                    update_n_lines = "", -- Update `n_lines`
+                    find = "",
+                    find_left = "",
+                    highlight = "",
+                    update_n_lines = "",
                 },
             })
             require("mini.comment").setup({
