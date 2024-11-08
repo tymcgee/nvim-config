@@ -52,3 +52,20 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt_local.spell = true
     end,
 })
+
+-- autosave on switching buffers
+vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
+    callback = function(event)
+        if not vim.api.nvim_buf_is_loaded(event.buf) then
+            return
+        end
+
+        vim.api.nvim_buf_call(event.buf, function()
+            vim.cmd("silent! update")
+            -- vim.print("Saved")
+            -- vim.fn.timer_start(1000, function()
+            --     vim.print("")
+            -- end)
+        end)
+    end,
+})
