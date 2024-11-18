@@ -83,7 +83,6 @@ return {
             "black",
             "fixjson",
             "gofumpt",
-            "goimports",
             "prettier",
             "shfmt",
             "stylua",
@@ -106,6 +105,8 @@ return {
         for _, tool in ipairs(tools) do
             install_tool(tool)
         end
+
+        lspconfig.gopls.setup({ settings = { gopls = { gofumpt = true } } })
 
         lspconfig.html.setup({
             filetypes = { "html", "templ" },
@@ -138,9 +139,7 @@ return {
 
         lspconfig.tailwindcss.setup({
             -- defaults include a lot more, but it doesn't seem like this overrides the defaults
-            filetypes = {
-                "templ",
-            },
+            filetypes = { "templ" },
             init_options = {
                 userLanguages = {
                     templ = "html",
@@ -148,11 +147,8 @@ return {
             },
         })
 
-        lspconfig.emmet_language_server.setup({
-            filetypes = {
-                "templ",
-            },
-        })
+        lspconfig.emmet_language_server.setup({ filetypes = { "templ" } })
+
         lspconfig.basedpyright.setup({
             settings = {
                 basedpyright = {

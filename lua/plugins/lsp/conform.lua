@@ -8,7 +8,7 @@ return {
                 formatters_by_ft = {
                     lua = { "stylua" },
                     python = { "black" },
-                    go = { "goimports", "gofumpt" },
+                    -- go formatting is done by gofumpt defined in the lspconfig file
                     templ = { "templ" },
                     json = { "fixjson", "jq", "prettier", stop_after_first = true },
                     yaml = { "yamlfix" },
