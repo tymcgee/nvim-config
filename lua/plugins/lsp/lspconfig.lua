@@ -52,10 +52,7 @@ return {
             end,
         })
 
-        local default_setup = function(server)
-            lspconfig[server].setup({})
-        end
-
+        -- SERVER AND TOOL INSTALLATION
         local install_tool = function(tool)
             local mr = require("mason-registry")
             local p = mr.get_package(tool)
@@ -92,7 +89,6 @@ return {
             "golangci-lint",
         }
 
-        -- LSP CONFIG
         require("mason").setup({})
         local mason_lspconfig = require("mason-lspconfig")
         mason_lspconfig.setup({
@@ -101,13 +97,14 @@ return {
 
         local installed_servers = mason_lspconfig.get_installed_servers()
         for _, server in ipairs(installed_servers) do
-            default_setup(server)
+            lspconfig[server].setup({})
         end
 
         for _, tool in ipairs(tools) do
             install_tool(tool)
         end
 
+        -- LSP CONFIG
         lspconfig.gopls.setup({ settings = { gopls = { gofumpt = true } } })
 
         lspconfig.html.setup({
