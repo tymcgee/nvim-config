@@ -1,6 +1,11 @@
+-- better up/down
+-- better up/down
+vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
+
 -- keep screen centered when jumping around
-vim.keymap.set("n", "<c-d>", "<c-d>zz")
-vim.keymap.set("n", "<c-u>", "<c-u>zz")
+-- vim.keymap.set("n", "<c-d>", "<c-d>zz")
+-- vim.keymap.set("n", "<c-u>", "<c-u>zz")
 
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Copy to clipboard" })
 

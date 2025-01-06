@@ -8,6 +8,7 @@ return {
         { "saadparwaiz1/cmp_luasnip" },
         { "luckasRanarison/tailwind-tools.nvim" },
         { "onsails/lspkind.nvim" }, -- symbols in dropdown
+        { "xzbdmw/colorful-menu.nvim", config = true },
     },
 
     config = function()
@@ -20,11 +21,31 @@ return {
                 -- auto-select the first item
                 completeopt = "menu,menuone,noinsert",
             },
-            -- colorize tailwind colors
             formatting = {
-                format = require("lspkind").cmp_format({
-                    before = require("tailwind-tools.cmp").lspkind_format
-                }),
+                -- enable colorful completion menu
+                format = function(entry, vim_item)
+                    local completion_item = entry:get_completion_item()
+                    local highlights_info = require("colorful-menu").highlights(completion_item, vim.bo.filetype)
+
+                    -- error, such as missing parser, fallback to use raw label.
+                    if highlights_info == nil then
+                        vim_item.abbr = completion_item.label
+                    else
+                        vim_item.abbr_hl_group = highlights_info.highlights
+                        vim_item.abbr = highlights_info.text
+                    end
+
+                    -- colorize tailwind colors
+                    local kind = require("lspkind").cmp_format({
+                        before = require("tailwind-tools.cmp").lspkind_format,
+                        mode = "symbol_text",
+                    })(entry, vim_item)
+                    local strings = vim.split(kind.kind, "%s", { trimempty = true })
+                    vim_item.kind = " " .. (strings[1] or "") .. " "
+                    vim_item.menu = ""
+
+                    return vim_item
+                end,
             },
             window = {
                 completion = {
@@ -58,10 +79,10 @@ return {
                 }),
             }),
             sources = cmp.config.sources({
-                { name = "luasnip" },
-                { name = "nvim_lsp" },
-                { name = "buffer" },
-                { name = "path" },
+                { name = "luasnip", priority_weight = 1000 },
+                { name = "nvim_lsp", priority_weight = 500 },
+                { name = "buffer", priority_weight = 200 },
+                { name = "path", priority_weight = 200 },
             }),
             sorting = {
                 priority_weight = 1,

@@ -1,7 +1,7 @@
 return {
     "nvim-lualine/lualine.nvim",
     dependencies = {
-        "nvim-tree/nvim-web-devicons",
+        "echasnovski/mini.nvim", -- for icons
         "otavioschwanck/arrow.nvim",
     },
     opts = function()

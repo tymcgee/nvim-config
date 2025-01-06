@@ -7,7 +7,25 @@ return {
             require("mini.ai").setup()
             require("mini.cursorword").setup()
             require("mini.move").setup()
+            require("mini.notify").setup({ lsp_progress = { enable = false } })
+            require("mini.icons").setup()
+            MiniIcons.mock_nvim_web_devicons()
+
             require("mini.bufremove").setup()
+            -- stylua: ignore start
+            vim.keymap.set("n", "<s-q>", MiniBufremove.delete, { desc = "Delete buffer" })
+            vim.keymap.set("n", "<leader>bD", function() MiniBufremove.delete(0, true) end, { desc = "Force delete buffer" })
+            -- stylua: ignore end
+
+            require("mini.diff").setup({
+                view = {
+                    style = "sign",
+                    signs = { add = "▌", change = "▌", delete = "▁" },
+                },
+                delay = { text_change = 50 },
+            })
+            vim.keymap.set("n", "<leader>gh", MiniDiff.toggle_overlay, { desc = "Toggle git hunk overlay" })
+
             require("mini.surround").setup({
                 mappings = {
                     add = "ys", -- Add surrounding in Normal and Visual modes
@@ -20,6 +38,7 @@ return {
                     update_n_lines = "",
                 },
             })
+
             require("mini.comment").setup({
                 options = {
                     custom_commentstring = function()
@@ -27,12 +46,6 @@ return {
                     end,
                 },
             })
-
-            -- keymaps
-            -- stylua: ignore start
-            vim.keymap.set("n", "<s-q>", MiniBufremove.delete, { desc = "Delete buffer" })
-            vim.keymap.set("n", "<leader>bD", function() MiniBufremove.delete(0, true) end, { desc = "Force delete buffer" })
-            -- stylua: ignore end
         end,
     },
 }

@@ -31,5 +31,5 @@ return {
         })
     end,
     -- Optional dependencies
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = { "echasnovski/mini.nvim" }, -- for icons
 }
