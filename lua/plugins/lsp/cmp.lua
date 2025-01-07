@@ -6,7 +6,6 @@ return {
         { "hrsh7th/cmp-path" },
         { "L3MON4D3/LuaSnip" },
         { "saadparwaiz1/cmp_luasnip" },
-        { "luckasRanarison/tailwind-tools.nvim" },
         { "onsails/lspkind.nvim" }, -- symbols in dropdown
         { "xzbdmw/colorful-menu.nvim", config = true },
     },
@@ -23,29 +22,20 @@ return {
             },
             formatting = {
                 -- enable colorful completion menu
-                format = function(entry, vim_item)
-                    local completion_item = entry:get_completion_item()
-                    local highlights_info = require("colorful-menu").highlights(completion_item, vim.bo.filetype)
+                format = require("lspkind").cmp_format({
+                    before = function(entry, vim_item)
+                        local highlights_info = require("colorful-menu").cmp_highlights(entry)
 
-                    -- error, such as missing parser, fallback to use raw label.
-                    if highlights_info == nil then
-                        vim_item.abbr = completion_item.label
-                    else
-                        vim_item.abbr_hl_group = highlights_info.highlights
-                        vim_item.abbr = highlights_info.text
-                    end
+                        -- if highlight_info==nil, which means missing ts parser, let's fallback to use default `vim_item.abbr`.
+                        -- What this plugin offers is two fields: `vim_item.abbr_hl_group` and `vim_item.abbr`.
+                        if highlights_info ~= nil then
+                            vim_item.abbr_hl_group = highlights_info.highlights
+                            vim_item.abbr = highlights_info.text
+                        end
 
-                    -- colorize tailwind colors
-                    local kind = require("lspkind").cmp_format({
-                        before = require("tailwind-tools.cmp").lspkind_format,
-                        mode = "symbol_text",
-                    })(entry, vim_item)
-                    local strings = vim.split(kind.kind, "%s", { trimempty = true })
-                    vim_item.kind = " " .. (strings[1] or "") .. " "
-                    vim_item.menu = ""
-
-                    return vim_item
-                end,
+                        return vim_item
+                    end,
+                }),
             },
             window = {
                 completion = {
