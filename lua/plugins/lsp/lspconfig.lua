@@ -12,6 +12,7 @@ return {
 
         { "stevearc/conform.nvim" },
         { "ibhagwan/fzf-lua" },
+        { "saecki/live-rename.nvim", keys = { "<leader>cr" } },
         { "folke/lazydev.nvim", ft = "lua", opts = {} },
     },
 
@@ -45,8 +46,7 @@ return {
                 -- fzf pickers
                 vim.keymap.set("n", "gr", "<cmd>FzfLua lsp_references<cr>", { desc = "See references", buffer = event.buf })
                 vim.keymap.set("n", "gi", "<cmd>FzfLua lsp_implementations<cr>", { desc = "See implementations", buffer = event.buf })
-                -- the input for this is overridden by snacks.input
-                vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename", buffer = event.buf })
+                vim.keymap.set("n", "<leader>cr", require("live-rename").map({text = "", insert = true}), { desc = "Rename", buffer = event.buf })
                 vim.keymap.set("n", "<leader>ca", "<cmd>FzfLua lsp_code_actions<cr>", { desc = "Code actions", buffer = event.buf })
                 -- stylua: ignore end
             end,
