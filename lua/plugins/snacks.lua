@@ -5,6 +5,7 @@ return {
         input = { enabled = true },
         statuscolumn = { enabled = true },
         scroll = { enabled = true },
+        bigfile = { enabled = true },
         dashboard = {
             enabled = true,
             preset = {
