@@ -1,4 +1,4 @@
-local html_filetypes = { "html", "templ", "svelte", "tsx", "jsx", "vue" }
+local html_filetypes = { "html", "templ", "svelte", "tsx", "jsx", "vue", "typescriptreact" }
 return {
     { "Vimjas/vim-python-pep8-indent", ft = { "python" } },
     { "windwp/nvim-autopairs", config = true, event = "VeryLazy" },
