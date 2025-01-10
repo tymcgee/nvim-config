@@ -1,15 +1,7 @@
 return {
     {
         { "nvim-treesitter/nvim-treesitter-context", config = true },
-
-        {
-            "JoosepAlviste/nvim-ts-context-commentstring",
-            config = function()
-                return require("ts_context_commentstring").setup({
-                    enable_autocmd = false,
-                })
-            end,
-        },
+        { "folke/ts-comments.nvim", opts = {}, event = "VeryLazy", enabled = vim.fn.has("nvim-0.10.0") == 1 },
 
         {
             "nvim-treesitter/nvim-treesitter",
