@@ -64,7 +64,7 @@ return {
         -- NOTE: these are lspconfig names, not mason names
         local servers = {
             "lua_ls",
-            "rust_analyzer",
+            -- "rust_analyzer",
             "gopls",
             "basedpyright",
             "bashls",
@@ -76,6 +76,7 @@ return {
             "cssls",
             "tailwindcss",
             "emmet_language_server",
+            "templ",
         }
 
         local tools = {
