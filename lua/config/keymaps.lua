@@ -1,7 +1,10 @@
 -- better up/down
--- better up/down
 vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
 vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
+
+-- auto-indent pasted text. `[ and `] are marks for the previously changed/yanked text
+vim.keymap.set({ "n", "v" }, "p", "p`[v`]=<esc>_")
+vim.keymap.set({ "n", "v" }, "P", "P`[v`]=<esc>_")
 
 -- keep screen centered when jumping around
 -- vim.keymap.set("n", "<c-d>", "<c-d>zz")
