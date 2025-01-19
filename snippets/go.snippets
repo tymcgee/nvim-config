@@ -35,3 +35,11 @@ snippet er handle error
 
 snippet jsn Json struct mapping
 	\`json:"$1"\`
+
+snippet ctx Context argument
+	ctx context.Context, 
+
+snippet cf Function with context
+	func $1(ctx context.Context, $2) {
+		$0
+	}
