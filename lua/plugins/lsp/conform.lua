@@ -8,7 +8,7 @@ return {
             require("conform").setup({
                 formatters_by_ft = {
                     lua = { "stylua" },
-                    python = { "black" },
+                    python = { "ruff" },
                     templ = { "templ" },
                     json = { "fixjson", "jq", "prettier", stop_after_first = true },
                     yaml = { "yamlfix" },
@@ -21,6 +21,7 @@ return {
                     typescriptreact = { "prettier" },
                     svelte = { "prettier" },
                     ocaml = { "ocamlformat" },
+                    php = { "easy-coding-standard" },
                 },
                 format_on_save = function(bufnr)
                     if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then

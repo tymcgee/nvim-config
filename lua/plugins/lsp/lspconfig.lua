@@ -36,18 +36,12 @@ return {
             callback = function(event)
                 -- stylua: ignore start
                 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover", buffer = event.buf })
-                vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition", buffer = event.buf })
-                vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { desc = "Go to type definition", buffer = event.buf })
                 vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { desc = "Signature help", buffer = event.buf })
                 vim.keymap.set({"n", "x"}, "<leader>cf", function()
                     require("conform").format({async = true, lsp_fallback = true})
                 end, {desc = "Format document", buffer = event.buf})
 
-                -- fzf pickers
-                vim.keymap.set("n", "gr", "<cmd>FzfLua lsp_references<cr>", { desc = "See references", buffer = event.buf })
-                vim.keymap.set("n", "gi", "<cmd>FzfLua lsp_implementations<cr>", { desc = "See implementations", buffer = event.buf })
                 vim.keymap.set("n", "<leader>cr", require("live-rename").map({text = "", insert = true}), { desc = "Rename", buffer = event.buf })
-                vim.keymap.set("n", "<leader>ca", "<cmd>FzfLua lsp_code_actions<cr>", { desc = "Code actions", buffer = event.buf })
                 -- stylua: ignore end
             end,
         })
