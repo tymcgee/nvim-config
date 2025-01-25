@@ -37,6 +37,7 @@ return {
                 -- stylua: ignore start
                 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover", buffer = event.buf })
                 vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { desc = "Signature help", buffer = event.buf })
+                vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action", buffer = event.buf })
                 vim.keymap.set({"n", "x"}, "<leader>cf", function()
                     require("conform").format({async = true, lsp_fallback = true})
                 end, {desc = "Format document", buffer = event.buf})
