@@ -5,6 +5,7 @@ return {
     build = "make install_jsregexp",
     config = function()
         require("luasnip.loaders.from_snipmate").lazy_load()
+        require("luasnip.loaders.from_lua").lazy_load()
         require("luasnip").setup({
             region_check_events = "InsertEnter",
             delete_check_events = "InsertLeave",
