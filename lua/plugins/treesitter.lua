@@ -2,19 +2,16 @@ return {
     {
         { "nvim-treesitter/nvim-treesitter-context", config = true },
         { "folke/ts-comments.nvim", opts = {}, event = "VeryLazy", enabled = vim.fn.has("nvim-0.10.0") == 1 },
+        { "andymass/vim-matchup" },
 
         {
             "nvim-treesitter/nvim-treesitter",
             build = ":TSUpdate",
             config = function()
                 require("nvim-treesitter.configs").setup({
-                    highlight = {
-                        enable = true,
-                    },
-                    indent = {
-                        enable = true,
-                        disable = { "python" },
-                    },
+                    matchup = { enable = true },
+                    highlight = { enable = true },
+                    indent = { enable = true, disable = { "python" } },
                     ensure_installed = {
                         "json",
                         "yaml",
