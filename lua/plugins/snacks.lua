@@ -8,6 +8,9 @@ return {
         scroll = { enabled = true },
         bigfile = { enabled = true },
         picker = { enabled = true },
+        image = { enabled = true },
+        notifier = { enabled = true },
+        rename = { enabled = true },
         dashboard = {
             enabled = true,
             preset = {
