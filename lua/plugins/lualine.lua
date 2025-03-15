@@ -1,5 +1,6 @@
 return {
     "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
     dependencies = {
         "echasnovski/mini.nvim", -- for icons
         "otavioschwanck/arrow.nvim",

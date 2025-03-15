@@ -1,12 +1,14 @@
+local fileEntered = { "BufReadPost", "BufWritePost", "BufNewFile" }
 return {
     {
-        { "nvim-treesitter/nvim-treesitter-context", config = true },
-        { "folke/ts-comments.nvim", opts = {}, event = "VeryLazy", enabled = vim.fn.has("nvim-0.10.0") == 1 },
-        { "andymass/vim-matchup" },
+        { "nvim-treesitter/nvim-treesitter-context", config = true, event = fileEntered },
+        { "folke/ts-comments.nvim", opts = {}, event = fileEntered, enabled = vim.fn.has("nvim-0.10.0") == 1 },
+        { "andymass/vim-matchup", event = fileEntered },
 
         {
             "nvim-treesitter/nvim-treesitter",
             build = ":TSUpdate",
+            event = fileEntered,
             config = function()
                 require("nvim-treesitter.configs").setup({
                     matchup = { enable = true },
