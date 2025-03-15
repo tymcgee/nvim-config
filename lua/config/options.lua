@@ -40,6 +40,7 @@ vim.opt.cmdheight = 0
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
+vim.g.undotree_WindowLayout = 4
 
 vim.filetype.add({
     extension = {
