@@ -9,6 +9,7 @@ return {
         require("luasnip").setup({
             region_check_events = "InsertEnter",
             delete_check_events = "InsertLeave",
+            update_events = { "TextChanged", "TextChangedI" },
         })
 
         -- when switching back to normal mode, remove all active snippet jump locations
