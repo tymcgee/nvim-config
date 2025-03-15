@@ -9,9 +9,10 @@ return {
             keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
         },
         { "williamboman/mason-lspconfig.nvim" },
+        { "WhoIsSethDaniel/mason-tool-installer.nvim" },
 
+        { "j-hui/fidget.nvim", opts = {} },
         { "stevearc/conform.nvim" },
-        { "ibhagwan/fzf-lua" },
         { "saecki/live-rename.nvim", keys = { "<leader>cr" } },
         { "folke/lazydev.nvim", ft = "lua", opts = {} },
     },
@@ -34,121 +35,129 @@ return {
         vim.api.nvim_create_autocmd("LspAttach", {
             desc = "LSP Actions",
             callback = function(event)
-                -- stylua: ignore start
-                vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover", buffer = event.buf })
-                vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { desc = "Signature help", buffer = event.buf })
-                vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action", buffer = event.buf })
-                vim.keymap.set({"n", "x"}, "<leader>cf", function()
-                    require("conform").format({async = true, lsp_fallback = true})
-                end, {desc = "Format document", buffer = event.buf})
+                local map = function(keys, func, desc, mode)
+                    mode = mode or "n"
+                    vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+                end
 
-                vim.keymap.set("n", "<leader>cr", require("live-rename").map({text = "", insert = true}), { desc = "Rename", buffer = event.buf })
-                -- stylua: ignore end
+                local format = function()
+                    require("conform").format({ async = true, lsp_fallback = true })
+                end
+
+                local rename = function()
+                    return require("live-rename").map({ text = "", insert = true })
+                end
+
+                map("K", vim.lsp.buf.hover, "Hover")
+                map("gs", vim.lsp.buf.signature_help, "Signature help")
+                map("<leader>ca", vim.lsp.buf.code_action, "Code actions")
+                map("<leader>cf", format, "Format document")
+                map("<leader>cr", rename(), "Rename symbol")
             end,
         })
 
-        -- SERVER AND TOOL INSTALLATION
-        local install_tool = function(tool)
-            local mr = require("mason-registry")
-            local p = mr.get_package(tool)
-            if not p:is_installed() then
-                p:install()
-            end
-        end
+        -- SERVER AND TOOL INSTALLATION AND SETUP
+        -- (this section mostly taken from kickstart)
 
         -- NOTE: these are lspconfig names, not mason names
         local servers = {
-            "lua_ls",
-            -- "rust_analyzer",
-            "gopls",
-            "basedpyright",
-            "bashls",
-            "html",
-            "jsonls",
-            "svelte",
-            -- "ts_ls",
-            "vtsls",
-            "cssls",
-            "tailwindcss",
-            "emmet_language_server",
-            "templ",
+            bashls = {},
+            jsonls = {},
+            vtsls = {},
+            cssls = {},
+            gopls = {
+                settings = { gopls = { gofumpt = true } },
+            },
+
+            lua_ls = {
+                settings = {
+                    Lua = {
+                        completion = {
+                            callSnippet = "Replace",
+                        },
+                        -- ignore Lua_LS's noisy `missing-fields` warnings
+                        diagnostics = { disable = { "missing-fields" } },
+                    },
+                },
+            },
+
+            html = {
+                filetypes = { "html", "templ" },
+                settings = {
+                    html = {
+                        format = {
+                            enable = false,
+                        },
+                    },
+                },
+            },
+
+            svelte = {
+                settings = {
+                    svelte = {
+                        enable_ts_plugin = true,
+                        plugin = {
+                            svelte = {
+                                format = {
+                                    config = {
+                                        printWidth = 120,
+                                        svelteSortOrder = "options-scripts-styles-markup",
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+
+            tailwindcss = {
+                filetypes = { "templ" },
+                init_options = {
+                    userLanguages = {
+                        templ = "html",
+                    },
+                },
+            },
+
+            emmet_language_server = { filetypes = { "templ" } },
+
+            basedpyright = {
+                settings = {
+                    basedpyright = {
+                        typeCheckingMode = "standard",
+                    },
+                },
+            },
         }
 
-        local tools = {
+        local ensure_installed = vim.tbl_keys(servers or {})
+        vim.list_extend(ensure_installed, {
+            "stylua",
             "black",
             "fixjson",
             "gofumpt",
             "prettier",
             "shfmt",
-            "stylua",
             "yamlfix",
             "golangci-lint",
-        }
+        })
+        require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
         require("mason").setup({})
-        local mason_lspconfig = require("mason-lspconfig")
-        mason_lspconfig.setup({
-            ensure_installed = servers,
-        })
-
-        local installed_servers = mason_lspconfig.get_installed_servers()
-        for _, server in ipairs(installed_servers) do
-            lspconfig[server].setup({})
-        end
-
-        for _, tool in ipairs(tools) do
-            install_tool(tool)
-        end
-
-        -- LSP CONFIG
-        lspconfig.gopls.setup({ settings = { gopls = { gofumpt = true } } })
-
-        lspconfig.html.setup({
-            filetypes = { "html", "templ" },
-            settings = {
-                html = {
-                    format = {
-                        enable = false,
-                    },
-                },
-            },
-        })
-
-        lspconfig.svelte.setup({
-            settings = {
-                svelte = {
-                    plugin = {
-                        svelte = {
-                            format = {
-                                config = {
-                                    printWidth = 120,
-                                    svelteSortOrder = "options-scripts-styles-markup",
-                                },
-                            },
-                        },
-                    },
-                    enable_ts_plugin = true,
-                },
-            },
-        })
-
-        lspconfig.tailwindcss.setup({
-            -- defaults include a lot more, but it doesn't seem like this overrides the defaults
-            filetypes = { "templ" },
-            init_options = {
-                userLanguages = {
-                    templ = "html",
-                },
-            },
-        })
-
-        lspconfig.emmet_language_server.setup({ filetypes = { "templ" } })
-
-        lspconfig.basedpyright.setup({
-            settings = {
-                basedpyright = {
-                    typeCheckingMode = "standard",
-                },
+        require("mason-lspconfig").setup({
+            ensure_installed = {}, -- explicitly set to an empty table (it populates installs via mason-tool-installer)
+            automatic_installation = false,
+            handlers = {
+                function(server_name)
+                    local server = servers[server_name] or {}
+                    -- This handles overriding only values explicitly passed
+                    -- by the server configuration above. Useful when disabling
+                    -- certain features of an LSP
+                    server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+                    require("lspconfig")[server_name].setup(server)
+                end,
             },
         })
     end,
