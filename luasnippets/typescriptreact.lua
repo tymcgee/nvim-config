@@ -8,7 +8,7 @@ local function capitalize(args)
 end
 
 return {
-    s("trig", {
+    s("useState", {
         t("const ["),
         i(1),
         t(", set"),
