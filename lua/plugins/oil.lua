@@ -23,6 +23,7 @@ return {
             },
         })
 
+        -- press 'q' to close oil if it is open
         vim.api.nvim_create_autocmd("FileType", {
             pattern = { "oil" },
             callback = function(event)

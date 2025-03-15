@@ -8,7 +8,6 @@ return {
             require("mini.cursorword").setup()
             require("mini.move").setup()
             require("mini.bufremove").setup()
-            require("mini.notify").setup({ lsp_progress = { enable = false } })
             require("mini.icons").setup({ extension = { templ = { glyph = "", hl = "MiniIconsYellow" } } })
             MiniIcons.mock_nvim_web_devicons()
 

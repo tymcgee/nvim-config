@@ -20,10 +20,6 @@ return {
 
     config = function()
         -- LSP KEYBINDINGS
-        local lspconfig = require("lspconfig")
-        local lsp_defaults = lspconfig.util.default_config
-
-        -- globals
         vim.keymap.set("n", "<leader>clr", "<cmd>LspRestart<cr>", { desc = "Restart LSP" })
         vim.keymap.set("n", "<leader>cli", "<cmd>LspInfo<cr>", { desc = "LSP Info" })
         vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to prev diagnostic" })
@@ -31,7 +27,6 @@ return {
         vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Open diagnostic float" })
 
         -- stylua: ignore
-        lsp_defaults.capabilities = vim.tbl_deep_extend("force", lsp_defaults.capabilities, require("cmp_nvim_lsp").default_capabilities())
 
         vim.api.nvim_create_autocmd("LspAttach", {
             desc = "LSP Actions",

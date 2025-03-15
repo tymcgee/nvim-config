@@ -18,6 +18,7 @@ return {
                 { "<leader>s", group = "search" },
                 { "<leader>b", group = "buffer" },
                 { "<leader>t", group = "terminal" },
+                { "<leader>q", group = "session" },
                 { "s", group = "substitute" },
                 { "g", group = "goto" },
             },
