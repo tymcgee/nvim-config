@@ -30,7 +30,7 @@ return {
     keys = {
         -- stylua: ignore start
         { "<leader><leader>", function() Snacks.picker.grep() end, desc = "Live Grep" },
-        { "<leader><space>", function() Snacks.picker.smart() end, desc = "Smart Files" },
+        { "<leader><space>", function() Snacks.picker.smart({filter = {cwd = true}}) end, desc = "Smart Files" },
         { "<leader>sb", function() Snacks.picker.buffers() end, desc = "Buffers" },
         { "<leader>sh", function() Snacks.picker.help() end, desc = "Vim Help Pages" },
         { "<leader>sl", function() Snacks.picker.loclist() end, desc = "Location List" },
