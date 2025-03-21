@@ -7,15 +7,14 @@ local function capitalize(args)
     return firstToUpper(args[1][1])
 end
 
+-- stylua: ignore start
 return {
-    s("useState", {
-        t("const ["),
-        i(1),
-        t(", set"),
-        f(capitalize, { 1 }),
-        t("] = useState("),
-        i(2),
-        t(")"),
-        i(0),
-    }),
+    s(
+        "useState",
+        fmt("const [{}, set{}] = useState({})", {
+            i(1),
+            f(capitalize, { 1 }),
+            i(2),
+        })
+    ),
 }
