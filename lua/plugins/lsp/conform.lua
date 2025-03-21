@@ -8,7 +8,8 @@ return {
             require("conform").setup({
                 formatters_by_ft = {
                     lua = { "stylua" },
-                    python = { "ruff" },
+                    python = { "ruff_format" },
+                    htmldjango = { "djlint" },
                     templ = { "templ" },
                     json = { "fixjson", "jq", "prettier", stop_after_first = true },
                     yaml = { "yamlfix" },

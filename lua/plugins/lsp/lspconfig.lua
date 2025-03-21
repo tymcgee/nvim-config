@@ -78,7 +78,7 @@ return {
             },
 
             html = {
-                filetypes = { "html", "templ" },
+                filetypes = { "html", "templ", "htmldjango" },
                 settings = {
                     html = {
                         format = {
@@ -115,7 +115,7 @@ return {
                 },
             },
 
-            emmet_language_server = { filetypes = { "templ" } },
+            emmet_language_server = { filetypes = { "templ", "htmldjango" } },
 
             basedpyright = {
                 settings = {
