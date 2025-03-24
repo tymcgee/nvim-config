@@ -59,8 +59,10 @@ return {
         local servers = {
             bashls = {},
             jsonls = {},
-            vtsls = {},
             cssls = {},
+            taplo = {}, -- toml
+            yamlls = {},
+            vtsls = {},
             gopls = {
                 settings = { gopls = { gofumpt = true } },
             },
@@ -129,13 +131,13 @@ return {
         local ensure_installed = vim.tbl_keys(servers or {})
         vim.list_extend(ensure_installed, {
             "stylua",
-            "black",
             "fixjson",
-            "gofumpt",
-            "prettier",
             "shfmt",
-            "yamlfix",
+            "yamlfmt",
+            "ruff",
+            "gofumpt",
             "golangci-lint",
+            "prettier",
         })
         require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 

@@ -12,7 +12,7 @@ return {
                     htmldjango = { "djlint" },
                     templ = { "templ" },
                     json = { "fixjson", "jq", "prettier", stop_after_first = true },
-                    yaml = { "yamlfix" },
+                    yaml = { "yamlfmt" },
                     sh = { "shfmt" },
                     css = { "prettier" },
                     scss = { "prettier" },
