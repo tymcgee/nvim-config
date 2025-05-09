@@ -3,7 +3,6 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim",
         "sindrets/diffview.nvim",
-        "ibhagwan/fzf-lua", -- this, telescope, or mini.picker are required. would be nice if snacks picker worked too...
     },
     keys = { { "<leader>gg", "<cmd>Neogit<cr>", desc = "Open git" } },
     opts = {

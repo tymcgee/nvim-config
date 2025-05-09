@@ -2,14 +2,8 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPost", "BufWritePost", "BufNewFile" },
     dependencies = {
-        {
-            "williamboman/mason.nvim",
-            build = function()
-                pcall(vim.cmd, "MasonUpdate")
-            end,
-            keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
-        },
-        { "williamboman/mason-lspconfig.nvim" },
+        { "mason-org/mason.nvim", keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } } },
+        { "mason-org/mason-lspconfig.nvim" },
         { "WhoIsSethDaniel/mason-tool-installer.nvim" },
 
         { "j-hui/fidget.nvim", opts = {} },
@@ -22,12 +16,11 @@ return {
         -- LSP KEYBINDINGS
         vim.keymap.set("n", "<leader>clr", "<cmd>LspRestart<cr>", { desc = "Restart LSP" })
         vim.keymap.set("n", "<leader>cli", "<cmd>LspInfo<cr>", { desc = "LSP Info" })
-        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to prev diagnostic" })
-        vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+        -- stylua: ignore start
+        vim.keymap.set("n", "[d", function() vim.diagnostic.jump({count=1, float=true}) end, { desc = "Go to prev diagnostic" })
+        vim.keymap.set("n", "]d", function() vim.diagnostic.jump({count=-1, float=true}) end, { desc = "Go to next diagnostic" })
+        -- stylua: ignore end
         vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Open diagnostic float" })
-
-        -- stylua: ignore
-
         vim.api.nvim_create_autocmd("LspAttach", {
             desc = "LSP Actions",
             callback = function(event)
@@ -52,111 +45,44 @@ return {
             end,
         })
 
-        -- SERVER AND TOOL INSTALLATION AND SETUP
-        -- (this section mostly taken from kickstart)
-
-        -- NOTE: these are lspconfig names, not mason names
-        local servers = {
-            bashls = {},
-            jsonls = {},
-            cssls = {},
-            taplo = {}, -- toml
-            yamlls = {},
-            vtsls = {},
-            gopls = {
-                settings = { gopls = { gofumpt = true } },
-            },
-
-            lua_ls = {
-                settings = {
-                    Lua = {
-                        completion = {
-                            callSnippet = "Replace",
-                        },
-                        -- ignore Lua_LS's noisy `missing-fields` warnings
-                        diagnostics = { disable = { "missing-fields" } },
-                    },
-                },
-            },
-
-            html = {
-                filetypes = { "html", "templ", "htmldjango" },
-                settings = {
-                    html = {
-                        format = {
-                            enable = false,
-                        },
-                    },
-                },
-            },
-
-            svelte = {
-                settings = {
-                    svelte = {
-                        enable_ts_plugin = true,
-                        plugin = {
-                            svelte = {
-                                format = {
-                                    config = {
-                                        printWidth = 120,
-                                        svelteSortOrder = "options-scripts-styles-markup",
-                                    },
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-
-            tailwindcss = {
-                filetypes = { "templ" },
-                init_options = {
-                    userLanguages = {
-                        templ = "html",
-                    },
-                },
-            },
-
-            emmet_language_server = { filetypes = { "templ", "htmldjango" } },
-
-            basedpyright = {
-                settings = {
-                    basedpyright = {
-                        typeCheckingMode = "standard",
-                    },
-                },
-            },
-        }
-
-        local ensure_installed = vim.tbl_keys(servers or {})
-        vim.list_extend(ensure_installed, {
-            "stylua",
-            "fixjson",
-            "shfmt",
-            "yamlfmt",
-            "ruff",
-            "gofumpt",
-            "golangci-lint",
-            "prettier",
-        })
-        require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
-
+        -- add the same capabilities to all server configurations
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-        require("mason").setup({})
-        require("mason-lspconfig").setup({
-            ensure_installed = {}, -- explicitly set to an empty table (it populates installs via mason-tool-installer)
-            automatic_installation = false,
-            handlers = {
-                function(server_name)
-                    local server = servers[server_name] or {}
-                    -- This handles overriding only values explicitly passed
-                    -- by the server configuration above. Useful when disabling
-                    -- certain features of an LSP
-                    server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-                    require("lspconfig")[server_name].setup(server)
-                end,
+        vim.lsp.config("*", {
+            capabilities = capabilities,
+        })
+
+        require("mason").setup()
+        require("mason-lspconfig").setup()
+        require("mason-tool-installer").setup({
+            auto_update = true,
+            -- stylua: ignore start
+            ensure_installed = {
+                -- language servers
+                "bashls",
+                "jsonls",
+                "cssls",
+                "taplo",
+                "yamlls",
+                "vtsls",
+                { "gopls", condition = function() return not vim.fn.executable("go") end },
+                "lua_ls",
+                "html",
+                "svelte",
+                "tailwindcss",
+                "emmet_language_server",
+                "basedpyright",
+                -- tools
+                "stylua",
+                "fixjson",
+                "shfmt",
+                "yamlfmt",
+                "ruff",
+                { "gofumpt", condition = function() return not vim.fn.executable("go") end },
+                { "golangci-lint", condition = function() return not vim.fn.executable("go") end },
+                "prettier",
             },
+            -- stylua: ignore end
         })
     end,
 }
