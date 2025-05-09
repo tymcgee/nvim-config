@@ -80,6 +80,7 @@ return {
                 "basedpyright",
                 "docker_compose_language_service",
                 "dockerls",
+                { "terraformls", condition = is_installed("terraform") },
                 -- tools
                 "stylua",
                 "fixjson",
