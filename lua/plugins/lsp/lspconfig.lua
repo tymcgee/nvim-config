@@ -78,6 +78,8 @@ return {
                 "tailwindcss",
                 "emmet_language_server",
                 "basedpyright",
+                "docker_compose_language_service",
+                "dockerls",
                 -- tools
                 "stylua",
                 "fixjson",
