@@ -6,8 +6,9 @@ return {
     },
     keys = { { "<leader>gg", "<cmd>Neogit<cr>", desc = "Open git" } },
     opts = {
-        -- this doesn't seem to work. maybe it does something else
+        graph_style = "kitty",
         disable_line_numbers = false,
+        disable_relative_line_numbers = false,
         mappings = {
             status = {
                 -- so that i can use relative line jumps
