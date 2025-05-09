@@ -52,6 +52,12 @@ return {
             capabilities = capabilities,
         })
 
+        local is_installed = function(cmd)
+            return function()
+                return not vim.fn.executable(cmd)
+            end
+        end
+
         require("mason").setup()
         require("mason-lspconfig").setup()
         require("mason-tool-installer").setup({
@@ -65,7 +71,7 @@ return {
                 "taplo",
                 "yamlls",
                 "vtsls",
-                { "gopls", condition = function() return not vim.fn.executable("go") end },
+                { "gopls", condition = is_installed("go") },
                 "lua_ls",
                 "html",
                 "svelte",
@@ -78,8 +84,8 @@ return {
                 "shfmt",
                 "yamlfmt",
                 "ruff",
-                { "gofumpt", condition = function() return not vim.fn.executable("go") end },
-                { "golangci-lint", condition = function() return not vim.fn.executable("go") end },
+                { "gofumpt", condition = is_installed("go") },
+                { "golangci-lint", condition = is_installed("go") },
                 "prettier",
             },
             -- stylua: ignore end
