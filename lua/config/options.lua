@@ -37,6 +37,7 @@ vim.opt.splitkeep = "screen"
 vim.opt.virtualedit = "block" -- Allow virtual block mode to extend past a line
 vim.opt.sessionoptions = vim.opt.sessionoptions + "globals"
 vim.opt.cmdheight = 0
+vim.opt.breakindent = true
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
