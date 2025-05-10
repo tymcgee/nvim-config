@@ -1,0 +1,39 @@
+snippet type
+    type $1 = {
+        $0
+    }
+
+snippet exp
+    export default function $1() {
+        return (
+            <div>
+                $0
+            </div>
+        )
+    }
+
+snippet cmt
+    {/* $0 */}
+
+snippet useEffect
+    useEffect(() => {
+        $0
+    }, [$1])
+
+snippet useMemo
+    const $1 = useMemo(() => {
+        $0
+    }, [$2])
+
+snippet for
+    for (${1:const} $2 of $3) {
+        $0
+    }
+
+snippet fori
+    for (let i = ${1:0}; i < $2; i++) {
+        $0
+    }
+
+snippet log
+    console.log($0)
