@@ -69,3 +69,25 @@ for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
+
+-- neovide stuff
+vim.o.guifont = "JetBrainsMono Nerd Font Mono:h16"
+vim.g.neovide_scroll_animation_length = 0.1 -- 0.3 is default
+vim.g.neovide_cursor_animation_length = 0.03 -- 0.13 is default
+vim.g.neovide_cursor_trail_size = 0.2 -- 0.8 is default
+-- some weird gui stuff for getting copy paste to work (copied from neovide faq)
+-- on non-mac, the copy/paste bindings are control+<key>
+-- on mac, it is cmd+<key>
+local is_mac = jit.os == "OSX"
+if vim.g.neovide then
+    -- stylua: ignore start
+    local modifier = "c"
+    if is_mac then modifier = "D" end
+    local function cmd(mod, key) return "<" .. mod .. "-" .. key .. ">" end
+    vim.keymap.set("v", cmd(modifier, "c"), '"+y') -- Copy
+    vim.keymap.set("n", cmd(modifier, "v"), '"+P') -- Paste normal mode
+    vim.keymap.set("v", cmd(modifier, "v"), '"+P') -- Paste visual mode
+    vim.keymap.set("c", cmd(modifier, "v"), "<C-R>+") -- Paste command mode
+    vim.keymap.set("i", cmd(modifier, "v"), '<ESC>"+Pi') -- Paste insert mode (doesn't quite behave great, but whatever)
+    -- stylua: ignore end
+end
