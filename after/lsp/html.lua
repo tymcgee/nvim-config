@@ -1,5 +1,5 @@
 return {
-    filetypes = { "html", "templ", "htmldjango" },
+    filetypes = require("html-filetypes"),
     settings = {
         html = {
             format = {

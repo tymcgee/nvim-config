@@ -1,5 +1,5 @@
 return {
-    filetypes = { "templ" },
+    filetypes = require("html-filetypes"),
     init_options = {
         userLanguages = {
             templ = "html",
