@@ -72,6 +72,7 @@ return {
                 "yamlls",
                 "vtsls",
                 { "gopls", condition = is_installed("go") },
+                { "templ", condition = is_installed("go") },
                 "lua_ls",
                 "html",
                 "svelte",
