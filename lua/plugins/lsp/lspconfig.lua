@@ -1,8 +1,9 @@
 return {
     "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufWritePost", "BufNewFile" },
+    -- don't lazy load lspconfig or else syntax highlighting dies
+    -- event = { "BufReadPre", "BufWritePost", "BufNewFile" },
     dependencies = {
-        { "mason-org/mason.nvim", keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } } },
+        { "mason-org/mason.nvim", opts = {}, keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } } },
         { "mason-org/mason-lspconfig.nvim" },
         { "WhoIsSethDaniel/mason-tool-installer.nvim" },
 
@@ -58,10 +59,10 @@ return {
             end
         end
 
-        require("mason").setup()
         require("mason-lspconfig").setup()
         require("mason-tool-installer").setup({
-            auto_update = true,
+            auto_update = false,
+            run_on_start = false,
             -- stylua: ignore start
             ensure_installed = {
                 -- language servers

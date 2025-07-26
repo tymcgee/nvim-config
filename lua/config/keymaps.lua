@@ -10,9 +10,6 @@ vim.keymap.set({ "n", "v" }, "P", "P`[v`]=<esc>_")
 -- vim.keymap.set("n", "<c-d>", "<c-d>zz")
 -- vim.keymap.set("n", "<c-u>", "<c-u>zz")
 
-vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Copy to clipboard" })
-vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from clipboard" })
-
 -- Clear search with <esc>
 vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 

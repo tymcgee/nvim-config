@@ -37,10 +37,15 @@ vim.opt.splitkeep = "screen"
 vim.opt.virtualedit = "block" -- Allow virtual block mode to extend past a line
 vim.opt.sessionoptions = vim.opt.sessionoptions + "globals"
 vim.opt.cmdheight = 0
-vim.opt.breakindent = true
+vim.opt.breakindent = true -- Wrapped lines in, say, markdown files, will respect indentation
 
--- Fix markdown indentation settings
-vim.g.markdown_recommended_style = 0
+-- Sync OS clipboard with neovim.
+-- Scheduled after 'UIEnter' because it can increase startup time.
+vim.schedule(function()
+    vim.o.clipboard = "unnamedplus"
+end)
+
+vim.g.markdown_recommended_style = 0 -- Fix markdown indentation settings
 vim.g.undotree_WindowLayout = 4
 
 vim.filetype.add({
