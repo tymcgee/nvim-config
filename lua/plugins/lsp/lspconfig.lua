@@ -69,7 +69,7 @@ return {
                 "bashls",
                 "jsonls",
                 "cssls",
-                "taplo",
+                "taplo", -- note that the default config doesn't activate unless the toml file is in a git repo
                 "yamlls",
                 "vtsls",
                 { "gopls", condition = is_installed("go") },
