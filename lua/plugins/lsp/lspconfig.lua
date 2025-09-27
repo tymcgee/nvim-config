@@ -5,7 +5,6 @@ return {
     dependencies = {
         { "mason-org/mason.nvim", opts = {}, keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } } },
         { "mason-org/mason-lspconfig.nvim" },
-        { "WhoIsSethDaniel/mason-tool-installer.nvim" },
 
         { "j-hui/fidget.nvim", opts = {} },
         { "stevearc/conform.nvim" },
@@ -53,47 +52,10 @@ return {
             capabilities = capabilities,
         })
 
-        local is_installed = function(cmd)
-            return function()
-                return not vim.fn.executable(cmd)
-            end
-        end
-
+        require("plugins.lsp.required")
         require("mason-lspconfig").setup()
-        require("mason-tool-installer").setup({
-            auto_update = false,
-            run_on_start = false,
-            -- stylua: ignore start
-            ensure_installed = {
-                -- language servers
-                "bashls",
-                "jsonls",
-                "cssls",
-                "taplo", -- note that the default config doesn't activate unless the toml file is in a git repo
-                "yamlls",
-                "vtsls",
-                { "gopls", condition = is_installed("go") },
-                { "templ", condition = is_installed("go") },
-                "lua_ls",
-                "html",
-                "svelte",
-                "tailwindcss",
-                "emmet_language_server",
-                "basedpyright",
-                "docker_compose_language_service",
-                "dockerls",
-                { "terraformls", condition = is_installed("terraform") },
-                -- tools
-                "stylua",
-                "fixjson",
-                "shfmt",
-                "yamlfmt",
-                "ruff",
-                { "gofumpt", condition = is_installed("go") },
-                { "golangci-lint", condition = is_installed("go") },
-                "prettier",
-            },
-            -- stylua: ignore end
-        })
+
+        -- enable other servers not controlled by mason
+        vim.lsp.enable("gleam")
     end,
 }
