@@ -16,14 +16,7 @@ return {
             vim.keymap.set("n", "<leader>bD", function() MiniBufremove.delete(0, true) end, { desc = "Force delete buffer" })
             -- stylua: ignore end
 
-            require("mini.diff").setup({
-                view = {
-                    style = "sign",
-                    signs = { add = "▌", change = "▌", delete = "▁" },
-                },
-                delay = { text_change = 50 },
-            })
-            vim.keymap.set("n", "<leader>gh", MiniDiff.toggle_overlay, { desc = "Toggle git hunk overlay" })
+            -- removed mini.diff in favor of gitsigns (it has more features and integrations with other plugins, like the scrollbar)
 
             require("mini.surround").setup({
                 mappings = {
