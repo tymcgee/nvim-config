@@ -71,15 +71,7 @@ return {
             }),
             sources = cmp.config.sources({
                 { name = "luasnip", priority_weight = 1000 },
-                {
-                    name = "nvim_lsp",
-                    priority_weight = 500,
-                    -- it took me hours to figure how to stop python from suggesting things after pressing "["
-                    -- this probably is slow as shit
-                    entry_filter = function(entry, ctx)
-                        return ctx.filetype ~= "python" or string.sub(ctx.cursor_before_line, -1) ~= "["
-                    end,
-                },
+                { name = "nvim_lsp", priority_weight = 500 },
                 { name = "buffer", priority_weight = 200 },
                 { name = "path", priority_weight = 200 },
             }),
