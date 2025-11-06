@@ -7,6 +7,7 @@ return {
 
         {
             "nvim-treesitter/nvim-treesitter",
+            checkout = "main",
             build = ":TSUpdate",
             event = fileEntered,
             config = function()
