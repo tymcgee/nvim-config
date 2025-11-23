@@ -5,4 +5,5 @@ return {
     { "windwp/nvim-ts-autotag", ft = require("html-filetypes"), opts = { opts = { enable_close_on_slash = true } } },
     { "nmac427/guess-indent.nvim", config = true, event = "BufReadPost" },
     { "mbbill/undotree", keys = { { "<leader>u", "<cmd>UndotreeToggle<cr>", desc = "Undo tree" } } },
+    { "dmmulroy/ts-error-translator.nvim", config = true },
 }
