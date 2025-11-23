@@ -31,11 +31,6 @@ return {
                     return { timeout_ms = 500, lsp_fallback = true, format_after_save = true }
                 end,
                 notify_on_error = false,
-                formatters = {
-                    prettier = {
-                        prepend_args = { "--tab-width", "4" },
-                    },
-                },
             })
 
             vim.api.nvim_create_user_command("FormatToggle", function(args)
