@@ -17,6 +17,7 @@ return {
                     indent = { enable = true, disable = { "python" } },
                     ensure_installed = {
                         "json",
+                        "jsonc",
                         "yaml",
                         "toml",
                         "csv",
