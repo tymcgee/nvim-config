@@ -37,6 +37,7 @@ vim.opt.splitkeep = "screen"
 vim.opt.virtualedit = "block" -- Allow virtual block mode to extend past a line
 vim.opt.sessionoptions = vim.opt.sessionoptions + "globals"
 vim.opt.cmdheight = 0
+vim.opt.backupcopy = "yes" -- helps with HMR in bun
 vim.opt.breakindent = true -- Wrapped lines in, say, markdown files, will respect indentation
 
 -- Sync OS clipboard with neovim.
