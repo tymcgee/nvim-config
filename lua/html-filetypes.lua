@@ -8,4 +8,5 @@ return {
     "typescriptreact",
     "php",
     "htmldjango",
+    "astro",
 }
