@@ -1,5 +1,6 @@
 return {
     "nvim-lualine/lualine.nvim",
+    enabled = false,
     event = "VeryLazy",
     dependencies = {
         "echasnovski/mini.nvim", -- for icons

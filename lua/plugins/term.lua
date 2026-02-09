@@ -1,5 +1,6 @@
 return {
     "akinsho/toggleterm.nvim",
+    enabled = false,
     version = "*",
     opts = function()
         local shell = vim.fn.exepath("bash")

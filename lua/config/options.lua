@@ -42,9 +42,9 @@ vim.opt.breakindent = true -- Wrapped lines in, say, markdown files, will respec
 
 -- Sync OS clipboard with neovim.
 -- Scheduled after 'UIEnter' because it can increase startup time.
-vim.schedule(function()
-    vim.o.clipboard = "unnamedplus"
-end)
+-- vim.schedule(function()
+--     vim.o.clipboard = "unnamedplus"
+-- end)
 
 vim.g.markdown_recommended_style = 0 -- Fix markdown indentation settings
 vim.g.undotree_WindowLayout = 4
