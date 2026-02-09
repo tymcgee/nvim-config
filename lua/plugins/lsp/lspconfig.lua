@@ -45,13 +45,6 @@ return {
             end,
         })
 
-        -- add the same capabilities to all server configurations
-        local capabilities = vim.lsp.protocol.make_client_capabilities()
-        capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-        vim.lsp.config("*", {
-            capabilities = capabilities,
-        })
-
         require("plugins.lsp.required")
         require("mason-lspconfig").setup()
 
