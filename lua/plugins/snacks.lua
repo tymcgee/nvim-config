@@ -26,6 +26,7 @@ return {
         { "<leader>sD", function() Snacks.picker.diagnostics() end, desc = "Document Diagnostics" },
         { "<leader>sc", function() Snacks.picker.git_log() end, desc = "Commits" },
         { "<leader>sM", function() Snacks.picker.man() end, desc = "Man pages" },
+        { "<leader>u", function() Snacks.picker.undo({layout = {preset = "right"}}) end, desc = "Undo tree" },
 
         -- lsp
         { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
