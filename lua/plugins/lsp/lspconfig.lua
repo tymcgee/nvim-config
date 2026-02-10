@@ -6,7 +6,6 @@ return {
         { "mason-org/mason.nvim", opts = {}, keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } } },
         { "mason-org/mason-lspconfig.nvim" },
 
-        { "j-hui/fidget.nvim", opts = {} },
         { "stevearc/conform.nvim" },
         { "saecki/live-rename.nvim", keys = { "<leader>cr" } },
         { "folke/lazydev.nvim", ft = "lua", opts = {} },

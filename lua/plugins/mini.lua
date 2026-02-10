@@ -10,6 +10,7 @@ return {
             require("mini.statusline").setup()
             require("mini.move").setup()
             require("mini.bufremove").setup()
+            -- require("mini.notify").setup()
             require("mini.icons").setup({ extension = { templ = { glyph = "", hl = "MiniIconsYellow" } } })
             MiniIcons.mock_nvim_web_devicons()
 
