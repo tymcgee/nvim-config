@@ -14,9 +14,7 @@ local ensure_installed = {
     "vtsls",
     "lua-language-server",
     "html-lsp",
-    "svelte-language-server",
     "tailwindcss-language-server",
-    "emmet-language-server",
     "docker-compose-language-service",
     "dockerfile-language-server",
 
