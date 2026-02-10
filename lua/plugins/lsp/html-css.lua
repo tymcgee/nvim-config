@@ -1,8 +1,7 @@
 return {
     "Jezda1337/nvim-html-css",
-    dependencies = { "hrsh7th/nvim-cmp", "nvim-treesitter/nvim-treesitter" },
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
     ft = require("html-filetypes"),
-    enabled = false,
     opts = {
         enable_on = require("html-filetypes"),
         -- style_sheets = {
