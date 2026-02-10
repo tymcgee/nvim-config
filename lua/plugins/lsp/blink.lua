@@ -27,6 +27,7 @@ return {
         },
 
         snippets = { preset = "luasnip" },
+        signature = { enabled = true },
 
         appearance = {
             nerd_font_variant = "mono",
