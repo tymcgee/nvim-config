@@ -18,7 +18,11 @@ return {
             vim.keymap.set("n", "<leader>bD", function() MiniBufremove.delete(0, true) end, { desc = "Force delete buffer" })
             -- stylua: ignore end
 
-            -- removed mini.diff in favor of gitsigns (it has more features and integrations with other plugins, like the scrollbar)
+            require("mini.operators").setup({
+                replace = { prefix = "s" },
+                exchange = { prefix = "" }, -- don't override gx (open link)
+                sort = { prefix = "" }, -- don't override gs (signature help)
+            })
 
             require("mini.surround").setup({
                 mappings = {
