@@ -6,10 +6,6 @@ vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", ex
 vim.keymap.set({ "n", "v" }, "p", "p`[v`]=<esc>_")
 vim.keymap.set({ "n", "v" }, "P", "P`[v`]=<esc>_")
 
--- keep screen centered when jumping around
--- vim.keymap.set("n", "<c-d>", "<c-d>zz")
--- vim.keymap.set("n", "<c-u>", "<c-u>zz")
-
 -- Clear search with <esc>
 vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 

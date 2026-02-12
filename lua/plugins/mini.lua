@@ -19,6 +19,12 @@ return {
             vim.keymap.set("n", "<leader>bD", function() MiniBufremove.delete(0, true) end, { desc = "Force delete buffer" })
             -- stylua: ignore end
 
+            local animate = require("mini.animate")
+            animate.setup({
+                cursor = { enable = false },
+                scroll = { timing = animate.gen_timing.linear({ duration = 150, unit = "total" }) },
+            })
+
             require("mini.operators").setup({
                 replace = { prefix = "s" },
                 exchange = { prefix = "" }, -- don't override gx (open link)

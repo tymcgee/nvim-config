@@ -6,7 +6,6 @@ return {
     opts = {
         input = { enabled = true },
         statuscolumn = { enabled = true },
-        scroll = { enabled = true },
         bigfile = { enabled = true },
         picker = { enabled = true },
         image = { enabled = true },
