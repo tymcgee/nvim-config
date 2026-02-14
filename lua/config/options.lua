@@ -39,6 +39,7 @@ vim.opt.sessionoptions = vim.opt.sessionoptions + "globals"
 vim.opt.cmdheight = 0
 vim.opt.backupcopy = "yes" -- helps with HMR in bun
 vim.opt.breakindent = true -- Wrapped lines in, say, markdown files, will respect indentation
+vim.opt.swapfile = false
 
 -- Sync OS clipboard with neovim.
 -- Scheduled after 'UIEnter' because it can increase startup time.
