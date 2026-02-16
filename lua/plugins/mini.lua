@@ -5,7 +5,6 @@ return {
         config = function()
             -- setup
             require("mini.ai").setup()
-            require("mini.pairs").setup()
             require("mini.cursorword").setup()
             require("mini.statusline").setup()
             require("mini.move").setup()
