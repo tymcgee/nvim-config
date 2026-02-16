@@ -4,7 +4,6 @@ vim.g.python_highlight_all = 1
 
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
-vim.opt.list = false
 vim.opt.shell = "/bin/bash" -- Helps tmux navigator not be so slow
 
 vim.opt.completeopt = "menu,menuone,noselect"
@@ -19,7 +18,6 @@ vim.opt.number = true -- Show line numbers
 vim.opt.relativenumber = true -- Relative line numbers
 vim.opt.shiftround = true -- Round indent to nearest multiple of shiftwidth
 vim.opt.shiftwidth = 4 -- Size of an indent
-vim.opt.showmode = false -- Dont show mode since we have a statusline
 vim.opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
 vim.opt.smartcase = true -- Don't ignore case with capitals
 vim.opt.smartindent = true -- Insert indents automatically
@@ -41,14 +39,7 @@ vim.opt.backupcopy = "yes" -- helps with HMR in bun
 vim.opt.breakindent = true -- Wrapped lines in, say, markdown files, will respect indentation
 vim.opt.swapfile = false
 
--- Sync OS clipboard with neovim.
--- Scheduled after 'UIEnter' because it can increase startup time.
--- vim.schedule(function()
---     vim.o.clipboard = "unnamedplus"
--- end)
-
 vim.g.markdown_recommended_style = 0 -- Fix markdown indentation settings
-vim.g.undotree_WindowLayout = 4
 
 vim.filetype.add({
     extension = {
