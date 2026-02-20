@@ -16,6 +16,8 @@ Config.new_autocmd("FileType", {
     "startuptime",
     "tsplayground",
     "checkhealth",
+    "gitsigns-blame",
+    "grug-far",
 }, q_ft, "Close some filetypes with 'q'")
 
 local autosave = function(event)
@@ -25,17 +27,3 @@ local autosave = function(event)
     vim.api.nvim_buf_call(event.buf, function() vim.cmd("silent! update") end)
 end
 Config.new_autocmd({ "BufLeave", "FocusLost" }, nil, autosave, "Autosave on switching buffers")
-
--- from the snacks notify docs, simple lsp progress notification (replaces fidget.nvim)
-local progress = function(ev)
-    local spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
-    vim.notify(vim.lsp.status(), "info", {
-        id = "lsp_progress",
-        title = "LSP Progress",
-        opts = function(notif)
-            notif.icon = ev.data.params.value.kind == "end" and " "
-                or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
-        end,
-    })
-end
-Config.new_autocmd("LspProgress", nil, progress, "LSP Progress")
