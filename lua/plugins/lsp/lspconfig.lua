@@ -5,7 +5,6 @@ return {
     dependencies = {
         { "mason-org/mason.nvim", opts = {}, keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } } },
         { "mason-org/mason-lspconfig.nvim" },
-
         { "stevearc/conform.nvim" },
         { "saecki/live-rename.nvim", keys = { "<leader>cr" } },
     },
@@ -27,13 +26,9 @@ return {
                     vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
                 end
 
-                local format = function()
-                    require("conform").format({ async = true, lsp_fallback = true })
-                end
+                local format = function() require("conform").format({ async = true, lsp_fallback = true }) end
 
-                local rename = function()
-                    return require("live-rename").map({ text = "", insert = true })
-                end
+                local rename = function() return require("live-rename").map({ text = "", insert = true }) end
 
                 map("K", vim.lsp.buf.hover, "Hover")
                 map("gs", vim.lsp.buf.signature_help, "Signature help")
