@@ -8,7 +8,6 @@ return {
 
         { "stevearc/conform.nvim" },
         { "saecki/live-rename.nvim", keys = { "<leader>cr" } },
-        { "folke/lazydev.nvim", ft = "lua", opts = {} },
     },
 
     config = function()
