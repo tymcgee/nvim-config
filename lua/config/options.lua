@@ -13,7 +13,6 @@ vim.opt.grepprg = "rg --vimgrep"
 vim.opt.sessionoptions = vim.opt.sessionoptions + "globals"
 vim.opt.swapfile = false
 vim.opt.termguicolors = true -- True color support
-vim.opt.timeoutlen = 300
 vim.opt.undofile = true
 vim.opt.undolevels = 10000
 
