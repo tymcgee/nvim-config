@@ -32,7 +32,7 @@ return {
         -- lsp
         { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
         -- gr is a default keymap (gra, gri, grt, ...) and i can't figure out a good way to replace it so i guess we're using gR instead
-        { "gR", function() Snacks.picker.lsp_references({layout = {preset = "bottom"}}) end, desc = "References" },
+        { "gr", function() Snacks.picker.lsp_references({layout = {preset = "bottom"}}) end, nowait = true, desc = "References" },
         { "gi", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
         { "gt", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto Type Definition" },
         -- stylua: ignore end
