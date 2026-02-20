@@ -1,3 +1,14 @@
+-- (stolen from MiniMax)
+-- This is a global variable accessible either through `_G.Config` or `Config`
+_G.Config = {}
+
+-- Helper to create custom autocommands
+local augroup = vim.api.nvim_create_augroup("custom-config", {})
+Config.new_autocmd = function(event, pattern, callback, desc)
+    local opts = { group = augroup, pattern = pattern, callback = callback, desc = desc }
+    vim.api.nvim_create_autocmd(event, opts)
+end
+
 require("config.autocommands")
 require("config.options")
 require("config.keymaps")
