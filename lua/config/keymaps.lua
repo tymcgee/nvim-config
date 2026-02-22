@@ -60,7 +60,7 @@ nmap_l_cmd("sn",       "lua Snacks.picker.notifications()",                     
 nmap_l_cmd("u",        "lua Snacks.picker.undo({layout = {preset = 'right'}})",        "Undo")
 
 -- lsp
-vim.keymap.set("n", "gd", "<Cmd>lua Snacks.picker.lsp_definitions()",      { desc = "Definition" })
-vim.keymap.set("n", "gr", "<Cmd>lua Snacks.picker.lsp_references()",       { desc = "References (LSP)", nowait = true })
-vim.keymap.set("n", "gi", "<Cmd>lua Snacks.picker.lsp_implementations()",  { desc = "Implementation" })
-vim.keymap.set("n", "gt", "<Cmd>lua Snacks.picker.lsp_type_definitions()", { desc = "Type definition" })
+vim.keymap.set("n", "gd", "<Cmd>lua Snacks.picker.lsp_definitions()<CR>",      { desc = "Definition" })
+vim.keymap.set("n", "gr", "<Cmd>lua Snacks.picker.lsp_references()<CR>",       { desc = "References (LSP)", nowait = true })
+vim.keymap.set("n", "gi", "<Cmd>lua Snacks.picker.lsp_implementations()<CR>",  { desc = "Implementation" })
+vim.keymap.set("n", "gt", "<Cmd>lua Snacks.picker.lsp_type_definitions()<CR>", { desc = "Type definition" })
