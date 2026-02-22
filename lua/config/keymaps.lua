@@ -45,8 +45,8 @@ vim.keymap.set("n", "]h", "<Cmd>Gitsigns next_hunk<CR>", { desc = "Next git hunk
 
 -- search
 nmap_leader("sr",      "<Cmd>GrugFar<CR>",                                             "Search and replace")
-nmap_l_cmd("<space>",  "lua Snacks.picker.grep()",                                     "Files")
-nmap_l_cmd("<leader>", "lua Snacks.picker.smart({filter = {cwd = true}})",             "Files")
+nmap_l_cmd("<space>",  "lua Snacks.picker.smart({filter = {cwd = true}})",             "Files")
+nmap_l_cmd("<leader>", "lua Snacks.picker.grep()",                                     "Files")
 nmap_l_cmd("sb",       "lua Snacks.picker.buffers()",                                  "Buffers")
 nmap_l_cmd("sh",       "lua Snacks.picker.help()",                                     "Vim help pages")
 nmap_l_cmd("sl",       "lua Snacks.picker.lazy({layout = {preset = 'vscode'}})",       "Plugin specs")
