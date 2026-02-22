@@ -71,16 +71,29 @@ vim.filetype.add({
     },
 })
 
-local signs = {
-    Error = " ",
-    Information = " ",
-    Hint = " ",
-    Warn = " ",
+local diagnostic_opts = {
+    -- :h diagnostic-signs
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = " ",
+            [vim.diagnostic.severity.WARN] = " ",
+            [vim.diagnostic.severity.HINT] = " ",
+            [vim.diagnostic.severity.INFO] = " ",
+        },
+        linehl = {
+            [vim.diagnostic.severity.ERROR] = "ErrorMsg",
+        },
+        priority = 9999,
+    },
+
+    -- Show all diagnostics as underline
+    underline = { severity = { min = "HINT", max = "ERROR" } },
+    -- Sort gutter icons/colors by severity (errors first)
+    severity_sort = true,
+    -- Don't update diagnostics when typing
+    update_in_insert = false,
 }
-for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-end
+vim.diagnostic.config(diagnostic_opts)
 
 -- neovide stuff
 vim.o.guifont = "JetBrainsMono Nerd Font Mono:h16"
