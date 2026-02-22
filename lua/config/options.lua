@@ -1,3 +1,4 @@
+-- stylua: ignore start
 vim.g.mapleader = "\\"
 vim.g.maplocalleader = "\\"
 vim.g.markdown_recommended_style = 0 -- Fix markdown indentation settings
@@ -6,51 +7,53 @@ vim.cmd("filetype plugin indent on")
 if vim.fn.exists("syntax_on") ~= 1 then
     vim.cmd("syntax enable")
 end
+
 -- General ========================================================
-vim.opt.backupcopy = "yes" -- helps with HMR in bun
-vim.opt.mouse = "a" -- Enable mouse mode
-vim.opt.grepprg = "rg --vimgrep"
-vim.opt.sessionoptions = vim.opt.sessionoptions + "globals"
-vim.opt.swapfile = false
-vim.opt.termguicolors = true -- True color support
-vim.opt.undofile = true
-vim.opt.undolevels = 10000
+vim.opt.backupcopy     = "yes"                              -- Helps with HMR in bun
+vim.opt.mouse          = "a"                                -- Enable mouse mode
+vim.opt.grepprg        = "rg --vimgrep"                     -- Use rg by default for grepping
+vim.opt.sessionoptions = vim.opt.sessionoptions + "globals" -- Add globals to saved sessions (idk what this does tbh)
+vim.opt.swapfile       = false                              -- Don't use a swapfile (it doesn't do anything for me)
+vim.opt.termguicolors  = true                               -- True color support
+vim.opt.undofile       = true                               -- Do use an undofile
+vim.opt.undolevels     = 10000                              -- Use lots of undo levels
 
 -- UI =============================================================
-vim.opt.breakindent = true -- Wrapped lines in, say, markdown files, will respect indentation
-vim.opt.cmdheight = 0
-vim.opt.conceallevel = 3 -- Hide * markup for bold and italic
-vim.opt.cursorline = true -- Enable highlighting of the current line
-vim.opt.number = true -- Show line numbers
-vim.opt.relativenumber = true -- Relative line numbers
-vim.opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
-vim.opt.splitbelow = true -- Put new windows below current
-vim.opt.splitright = true -- Put new windows right of current
-vim.opt.splitkeep = "screen"
-vim.opt.winminwidth = 5 -- Minimum window width
-vim.opt.wrap = false -- Disable line wrap
+vim.opt.breakindent    = true     -- Wrapped lines in, say, markdown files, will respect indentation
+vim.opt.conceallevel   = 3        -- Hide * markup for bold and italic
+vim.opt.cursorline     = true     -- Enable highlighting of the current line
+vim.opt.number         = true     -- Show line numbers
+vim.opt.relativenumber = true     -- Relative line numbers
+vim.opt.signcolumn     = "yes"    -- Always show the signcolumn, otherwise it would shift the text each time
+vim.opt.showmode       = false    -- Don't show the mode in the command line
+vim.opt.splitbelow     = true     -- Put new windows below current
+vim.opt.splitright     = true     -- Put new windows right of current
+vim.opt.splitkeep      = "screen" -- Scroll behavior when managing splits
+vim.opt.winminwidth    = 5        -- Minimum window width
+vim.opt.wrap           = false    -- Disable line wrap
 
 -- Folds
-vim.o.foldlevel = 10 -- Fold nothing by default
-vim.o.foldmethod = "indent" -- Fold based on indent level
-vim.o.foldnestmax = 10 -- Limit number of fold levels
-vim.o.foldtext = "" -- Show text under fold with its highlighting
+vim.o.foldlevel   = 10       -- Fold nothing by default
+vim.o.foldmethod  = "indent" -- Fold based on indent level
+vim.o.foldnestmax = 10       -- Limit number of fold levels
+vim.o.foldtext    = ""       -- Show text under fold with its highlighting
 
 -- Editing ========================================================
-vim.opt.expandtab = true -- Use spaces instead of tabs
-vim.opt.formatoptions = "rqnl1j" -- Improve comment editing (note this is further edited with an autocommand)
-vim.opt.ignorecase = true -- Ignore case
-vim.opt.scrolloff = 8
-vim.opt.sidescrolloff = 8
-vim.opt.shiftround = true -- Round indent to nearest multiple of shiftwidth
-vim.opt.shiftwidth = 4 -- Size of an indent
-vim.opt.smartcase = true -- Don't ignore case with capitals
-vim.opt.smartindent = true -- Insert indents automatically
-vim.opt.spelllang = { "en" }
-vim.opt.tabstop = 4 -- Number of spaces tabs count for
-vim.opt.virtualedit = "block" -- Allow virtual block mode to extend past a line
-vim.opt.completeopt = "menu,menuone,noselect"
+vim.opt.expandtab     = true                    -- Use spaces instead of tabs
+vim.opt.formatoptions = "rqnl1j"                -- Improve comment editing (note this is further edited with an autocommand)
+vim.opt.ignorecase    = true                    -- Ignore case
+vim.opt.scrolloff     = 8                       -- Vertical scrolloff
+vim.opt.sidescrolloff = 8                       -- Sidways scrolloff
+vim.opt.shiftround    = true                    -- Round indent to nearest multiple of shiftwidth
+vim.opt.shiftwidth    = 4                       -- Size of an indent
+vim.opt.smartcase     = true                    -- Don't ignore case with capitals
+vim.opt.smartindent   = true                    -- Insert indents automatically
+vim.opt.spelllang     = { "en" }                -- Use English as the spell language
+vim.opt.tabstop       = 4                       -- Number of spaces tabs count for
+vim.opt.virtualedit   = "block"                 -- Allow virtual block mode to extend past a line
+vim.opt.completeopt   = "menu,menuone,noselect" -- Completion menu options
 
+-- stylua: ignore end
 vim.filetype.add({
     extension = {
         templ = "templ",
