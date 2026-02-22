@@ -27,3 +27,24 @@ local autosave = function(event)
     vim.api.nvim_buf_call(event.buf, function() vim.cmd("silent! update") end)
 end
 Config.new_autocmd({ "BufLeave", "FocusLost" }, nil, autosave, "Autosave on switching buffers")
+
+-- Some other filetype autocommands for simple stuff that I don't want to make a bunch of `after/` files for
+local two_tab = function()
+    vim.bo.shiftwidth = 2
+    vim.bo.expandtab = true
+    vim.bo.softtabstop = 2
+end
+Config.new_autocmd("FileType", {
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "scss",
+    "css",
+    "terraform",
+}, two_tab, "Use two-space tabs")
+
+local dash = function() vim.opt_local.iskeyword:append("-") end
+Config.new_autocmd("FileType", { "css", "scss", "svelte" }, dash, "Add dashes to words")
+
+local autofmt = function() vim.g.disable_autoformat = false end
+Config.new_autocmd("FileType", { "templ", "go", "lua" }, autofmt, "Enable autoformatting")

@@ -1,5 +1,4 @@
 vim.keymap.set("n", "<leader>gt", ":!go mod tidy<cr><cr>", { desc = "Go mod tidy" })
-vim.g.disable_autoformat = false
 
 -- from https://github.com/golang/tools/blob/master/gopls/doc/vim.md#neovim-imports
 -- mimics the logic of goimports

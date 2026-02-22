@@ -22,6 +22,7 @@ vim.opt.undolevels     = 10000                              -- Use lots of undo 
 vim.opt.breakindent    = true     -- Wrapped lines in, say, markdown files, will respect indentation
 vim.opt.conceallevel   = 3        -- Hide * markup for bold and italic
 vim.opt.cursorline     = true     -- Enable highlighting of the current line
+vim.opt.linebreak      = true     -- Enable nice linebreaks if wrap is set
 vim.opt.number         = true     -- Show line numbers
 vim.opt.relativenumber = true     -- Relative line numbers
 vim.opt.signcolumn     = "yes"    -- Always show the signcolumn, otherwise it would shift the text each time
