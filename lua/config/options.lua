@@ -96,7 +96,7 @@ local diagnostic_opts = {
 vim.diagnostic.config(diagnostic_opts)
 
 -- neovide stuff
-vim.o.guifont = "JetBrainsMono Nerd Font Mono:h16"
+vim.o.guifont = "Iosevka Nerd Font Mono:h16"
 vim.g.neovide_scroll_animation_length = 0.1 -- 0.3 is default
 vim.g.neovide_cursor_animation_length = 0.03 -- 0.13 is default
 vim.g.neovide_cursor_trail_size = 0.2 -- 0.8 is default

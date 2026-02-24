@@ -64,3 +64,8 @@ vim.keymap.set("n", "gd", "<Cmd>lua Snacks.picker.lsp_definitions()<CR>",      {
 vim.keymap.set("n", "gr", "<Cmd>lua Snacks.picker.lsp_references()<CR>",       { desc = "References (LSP)", nowait = true })
 vim.keymap.set("n", "gi", "<Cmd>lua Snacks.picker.lsp_implementations()<CR>",  { desc = "Implementation" })
 vim.keymap.set("n", "gt", "<Cmd>lua Snacks.picker.lsp_type_definitions()<CR>", { desc = "Type definition" })
+
+-- session
+-- note that from within the picker you can do ctrl+d to delete the highlighted session
+nmap_l_cmd("qc", "AutoSession search", "Search sessions")
+nmap_l_cmd("qd", "AutoSession deletePicker", "Delete sessions")

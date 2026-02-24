@@ -7,6 +7,7 @@ return {
     { "dmmulroy/ts-error-translator.nvim", ft = { "typescript" }, config = true },
     { "lewis6991/gitsigns.nvim", event = { "BufReadPost" }, config = true },
     { "MagicDuck/grug-far.nvim", cmd = "GrugFar", config = true },
+    { "rmagatti/auto-session", lazy = false, opts = {} },
     -- stole this "background"-ish color from indent-blankline.nvim's default config... idk man
     { "saghen/blink.indent", config = function() vim.api.nvim_set_hl(0, "BlinkIndent", { fg = "#31353f" }) end },
 }

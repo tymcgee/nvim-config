@@ -35,3 +35,7 @@ require("lazy").setup({
         notify = false,
     },
 })
+
+if vim.g.neovide then
+    vim.schedule(function() vim.cmd("AutoSession search") end)
+end
