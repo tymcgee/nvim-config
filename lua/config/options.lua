@@ -12,6 +12,7 @@ end
 vim.opt.backupcopy     = "yes"                              -- Helps with HMR in bun
 vim.opt.mouse          = "a"                                -- Enable mouse mode
 vim.opt.grepprg        = "rg --vimgrep"                     -- Use rg by default for grepping
+vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 vim.opt.sessionoptions = vim.opt.sessionoptions + "globals" -- Add globals to saved sessions (idk what this does tbh)
 vim.opt.swapfile       = false                              -- Don't use a swapfile (it doesn't do anything for me)
 vim.opt.termguicolors  = true                               -- True color support
