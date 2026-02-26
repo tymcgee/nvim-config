@@ -1,7 +1,7 @@
 return {
     "L3MON4D3/LuaSnip",
-    lazy = true,
     version = "v2.*",
+    event = "BufReadPost",
     build = "make install_jsregexp",
     config = function()
         require("luasnip.loaders.from_snipmate").lazy_load()
@@ -12,44 +12,16 @@ return {
             update_events = { "TextChanged", "TextChangedI" },
         })
 
-        -- when switching back to normal mode, remove all active snippet jump locations
-        -- from https://github.com/L3MON4D3/LuaSnip/issues/258#issuecomment-1429989436
-        vim.api.nvim_create_autocmd("ModeChanged", {
-            pattern = "*",
-            callback = function()
-                if
-                    ((vim.v.event.old_mode == "s" and vim.v.event.new_mode == "n") or vim.v.event.old_mode == "i")
-                    and require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
-                    and not require("luasnip").session.jump_active
-                then
-                    require("luasnip").unlink_current()
-                end
-            end,
-        })
+        -- this is pretty scuffed, but i want to cancel snippets when switching back to normal mode.
+        -- this used to be doable with an autocommand (see https://github.com/L3MON4D3/LuaSnip/issues/258#issuecomment-1429989436)
+        -- but that doesn't work with blink for some reason.
+        -- so this is the new workaround (from https://github.com/saghen/blink.cmp/issues/2035#issuecomment-3125752129)
+        -- this is scuffed because esc isn't the only way to go back to normal mode, but for my purposes it is. so it's fine
+        vim.keymap.set({ "i", "s" }, "<esc>", function()
+            if require("luasnip").expand_or_jumpable() then
+                require("luasnip").unlink_current()
+            end
+            return "<esc>"
+        end, { desc = "Cancel snippets when returning to normal mode", expr = true })
     end,
-    keys = {
-        {
-            "<tab>",
-            function()
-                return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
-            end,
-            expr = true,
-            silent = true,
-            mode = "i",
-        },
-        {
-            "<tab>",
-            function()
-                require("luasnip").jump(1)
-            end,
-            mode = "s",
-        },
-        {
-            "<s-tab>",
-            function()
-                require("luasnip").jump(-1)
-            end,
-            mode = { "i", "s" },
-        },
-    },
 }
