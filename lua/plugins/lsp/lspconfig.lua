@@ -11,8 +11,13 @@ return {
 
     config = function()
         -- LSP KEYBINDINGS
-        vim.keymap.set("n", "<leader>clr", "<cmd>LspRestart<cr>", { desc = "Restart LSP" })
-        vim.keymap.set("n", "<leader>cli", "<cmd>LspInfo<cr>", { desc = "LSP Info" })
+        if vim.fn.has("nvim-0.12.0") == 1 then
+            vim.keymap.set("n", "<leader>clr", "<cmd>lsp restart<cr>", { desc = "Restart LSP" })
+        else
+            vim.keymap.set("n", "<leader>clr", "<cmd>LspRestart<cr>", { desc = "Restart LSP" })
+        end
+
+        vim.keymap.set("n", "<leader>cli", "<cmd>checkhealth vim.lsp<cr>", { desc = "LSP Info" })
         -- stylua: ignore start
         vim.keymap.set("n", "[d", function() vim.diagnostic.jump({count=1, float=true}) end, { desc = "Go to prev diagnostic" })
         vim.keymap.set("n", "]d", function() vim.diagnostic.jump({count=-1, float=true}) end, { desc = "Go to next diagnostic" })
