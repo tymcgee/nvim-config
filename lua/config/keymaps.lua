@@ -72,3 +72,9 @@ vim.keymap.set("n", "gt", "<Cmd>lua Snacks.picker.lsp_type_definitions()<CR>", {
 -- note that from within the picker you can do ctrl+d to delete the highlighted session
 nmap_l_cmd("qc", "AutoSession search", "Search sessions")
 nmap_l_cmd("qd", "AutoSession deletePicker", "Delete sessions")
+
+-- split/terminal navigation
+vim.keymap.set({"n", "t"}, "<C-h>", function() require("kitty-navigator").navigateLeft() end,  {desc = "Move left"})
+vim.keymap.set({"n", "t"}, "<C-j>", function() require("kitty-navigator").navigateDown() end,  {desc = "Move down"})
+vim.keymap.set({"n", "t"}, "<C-k>", function() require("kitty-navigator").navigateUp() end,    {desc = "Move up"})
+vim.keymap.set({"n", "t"}, "<C-l>", function() require("kitty-navigator").navigateRight() end, {desc = "Move right"})
