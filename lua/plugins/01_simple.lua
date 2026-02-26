@@ -9,4 +9,6 @@ return {
     { "rmagatti/auto-session", lazy = false, config = true },
     -- stole this "background"-ish color from indent-blankline.nvim's default config... idk man
     { "saghen/blink.indent", config = function() vim.api.nvim_set_hl(0, "BlinkIndent", { fg = "#31353f" }) end },
+    -- :help diff-mode for some more info on how this works natively
+    { "sindrets/diffview.nvim", opts = { file_panel = { listing_style = "list" } } },
 }

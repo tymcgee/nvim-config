@@ -20,6 +20,13 @@ Config.new_autocmd("FileType", {
     "grug-far",
 }, q_ft, "Close some filetypes with 'q'")
 
+Config.new_autocmd(
+    "FileType",
+    { "DiffviewFiles" },
+    function(ev) vim.keymap.set("n", "q", "<cmd>tabclose<cr>", { buffer = ev.buf, silent = true }) end,
+    "Close tab with 'q'"
+)
+
 local autosave = function(event)
     if not vim.api.nvim_buf_is_loaded(event.buf) then
         return

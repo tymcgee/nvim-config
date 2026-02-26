@@ -26,7 +26,7 @@ vim.keymap.set("i", ".", ".<c-g>u")
 vim.keymap.set("i", ";", ";<c-g>u")
 
 -- lazy
-vim.keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
+nmap_l_cmd("l", "Lazy", "Lazy")
 
 -- Normal mode in terminal
 vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
@@ -34,11 +34,14 @@ vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
 -- windows
 nmap_leader("-", "<C-W>s", "Split window below")
 nmap_leader("|", "<C-W>v", "Split window right")
+nmap_l_cmd("x", "tabclose", "Close tab")
 
--- gitsigns
-nmap_leader("gh", "<Cmd>Gitsigns preview_hunk_inline<CR>", "Toggle git hunk (inline)")
-nmap_leader("gb", "<Cmd>Gitsigns blame<CR>",               "Show git blame")
-nmap_leader("gd", "<Cmd>Gitsigns diffthis<CR>",            "Diff the current file")
+-- git
+nmap_l_cmd("gh",  "Gitsigns preview_hunk_inline", "Toggle git hunk (inline)")
+nmap_l_cmd("gb",  "Gitsigns blame",               "Show git blame")
+nmap_l_cmd("gdf", "Gitsigns diffthis",            "Diff the current file")
+nmap_l_cmd("gg", "DiffviewOpen",                 "Open current diff")
+nmap_l_cmd("gdc", "DiffviewClose",                "Close the diff (same as :tabclose)")
 -- TODO: figure out a clean way to exit out of the diff. right now i have to move to the diffed buffer and :q it
 vim.keymap.set("n", "[h", "<Cmd>Gitsigns prev_hunk<CR>", { desc = "Previous git hunk" })
 vim.keymap.set("n", "]h", "<Cmd>Gitsigns next_hunk<CR>", { desc = "Next git hunk" })
