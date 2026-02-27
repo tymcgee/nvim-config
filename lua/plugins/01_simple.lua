@@ -11,6 +11,10 @@ return {
     { "saghen/blink.indent", config = function() vim.api.nvim_set_hl(0, "BlinkIndent", { fg = "#31353f" }) end },
     -- :help diff-mode for some more info on how this works natively
     { "sindrets/diffview.nvim", opts = { file_panel = { listing_style = "list" } } },
+    { "saecki/live-rename.nvim" },
+    { "MeanderingProgrammer/render-markdown.nvim", ft = "markdown", opts = { completions = { lsp = { enabled = true } } } },
+
+    -- terminal navigator
     {
         "MunsMan/kitty-navigator.nvim",
         build = {
@@ -18,4 +22,24 @@ return {
             "cp pass_keys.py ~/.config/kitty",
         },
     },
+
+    -- lsp
+    {
+        "mason-org/mason-lspconfig.nvim",
+        opts = {},
+        dependencies = {
+            { "mason-org/mason.nvim", opts = {} },
+            "neovim/nvim-lspconfig",
+        },
+    },
+
+    -- snacks
+    {
+        "folke/snacks.nvim",
+        opts = {
+            input = { enabled = true },
+            picker = { enabled = true },
+            image = { enabled = true },
+        },
+    }
 }

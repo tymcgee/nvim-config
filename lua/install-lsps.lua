@@ -1,3 +1,5 @@
+-- This is a custom version of something like mason-tool-installer.
+-- Just run :MasonInstallAll to install all the tools listed below.
 local is_installed = function(cmd)
     return vim.fn.executable(cmd) == 1
 end
@@ -27,16 +29,17 @@ local ensure_installed = {
     "prettier",
 }
 
--- go
+local add = function(pkg) table.insert(ensure_installed, pkg) end
+
 if is_installed("go") then
-    ensure_installed[#ensure_installed + 1] = "gopls"
-    ensure_installed[#ensure_installed + 1] = "templ"
-    ensure_installed[#ensure_installed + 1] = "gofumpt"
-    ensure_installed[#ensure_installed + 1] = "golangci-lint"
+    add("gopls")
+    add("templ")
+    add("gofumpt")
+    add("golangci-lint")
 end
 
 if is_installed("terraform") then
-    ensure_installed[#ensure_installed + 1] = "terraform-ls"
+    add("terraform-ls")
 end
 
 -- run this command to sync all packages that aren't installed

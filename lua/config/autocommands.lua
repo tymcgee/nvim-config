@@ -2,6 +2,7 @@ Config.new_autocmd("FileType", nil, function() vim.opt.formatoptions:remove({ "c
 Config.new_autocmd("TextYankPost", nil, function() vim.highlight.on_yank() end, "Highlight on yank")
 Config.new_autocmd("VimResized", nil, function() vim.cmd("tabdo wincmd =") end, "Resize splits")
 
+-- Close some filetypes with 'q'
 local q_ft = function(event)
     vim.bo[event.buf].buflisted = false
     vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
@@ -20,6 +21,7 @@ Config.new_autocmd("FileType", {
     "grug-far",
 }, q_ft, "Close some filetypes with 'q'")
 
+-- Close diffview tab with 'q'
 Config.new_autocmd(
     "FileType",
     { "DiffviewFiles" },
@@ -27,6 +29,7 @@ Config.new_autocmd(
     "Close tab with 'q'"
 )
 
+-- Autosave
 local autosave = function(event)
     if not vim.api.nvim_buf_is_loaded(event.buf) then
         return

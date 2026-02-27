@@ -12,6 +12,7 @@ end
 require("config.autocommands")
 require("config.options")
 require("config.keymaps")
+require("install-lsps")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -28,7 +29,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     { import = "plugins" },
-    { import = "plugins.lsp" },
 }, {
     change_detection = {
         enabled = false,
@@ -36,6 +36,10 @@ require("lazy").setup({
     },
 })
 
+-- auto-launch the session chooser if opening neovide
 if vim.g.neovide then
     vim.schedule(function() vim.cmd("AutoSession search") end)
 end
+
+-- other language servers not controlled by mason
+vim.lsp.enable("gleam")
