@@ -4,9 +4,11 @@ local nmap_leader = function(suffix, rhs, desc) vim.keymap.set("n", "<Leader>" .
 local set = vim.keymap.set
 
 -- Windows =============================================================================================================
-nmap_leader("-", "<C-W>s",   "Split window below")
-nmap_leader("|", "<C-W>v",   "Split window right")
-nmap_leader("x",  cmd("tabclose"), "Close tab")
+nmap_leader("-",  "<C-W>s",                                 "Split window below")
+nmap_leader("|",  "<C-W>v",                                 "Split window right")
+nmap_leader("x",  cmd("tabclose"),                          "Close tab")
+nmap_leader("bD", cmd("lua MiniBufremove.delete(0, true)"), "Force delete buffer")
+vim.keymap.set("n", "<s-q>", cmd("lua MiniBufremove.delete()"), { desc = "Delete buffer" })
 
 -- Git =================================================================================================================
 nmap_leader("gh",  cmd("Gitsigns preview_hunk_inline"), "Toggle git hunk (inline)")
@@ -69,6 +71,10 @@ set({"n", "t"}, "<C-l>", cmd("lua require('kitty-navigator').navigateRight()"), 
 -- note that from within the picker you can do ctrl+d to delete the highlighted session
 nmap_leader("qc", cmd("AutoSession search"),       "Search sessions")
 nmap_leader("qd", cmd("AutoSession deletePicker"), "Delete sessions")
+
+-- Files
+nmap_leader("e", cmd("Oil"), "Open file explorer")
+nmap_leader("E", cmd("Oil ."), "Open CWD")
 
 -- Misc ================================================================================================================
 -- Better up/down
