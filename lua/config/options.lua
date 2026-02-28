@@ -59,32 +59,42 @@ vim.opt.completeopt   = "menu,menuone,noselect" -- Completion menu options
 vim.filetype.add({
     extension = {
         templ = "templ",
-        tmpl = "html",
+        tmpl  = "html",
     },
 })
 
 vim.filetype.add({
     filename = {
-        ["docker-compose.yml"] = "yaml.docker-compose",
+        ["docker-compose.yml"]  = "yaml.docker-compose",
         ["docker-compose.yaml"] = "yaml.docker-compose",
-        ["compose.yml"] = "yaml.docker-compose",
-        ["compose.yaml"] = "yaml.docker-compose",
+        ["compose.yml"]         = "yaml.docker-compose",
+        ["compose.yaml"]        = "yaml.docker-compose",
     },
 })
 
 local diagnostic_opts = {
     -- :h diagnostic-signs
+    -- don't show signs in the gutter, but do recolor the line number
     signs = {
         text = {
-            [vim.diagnostic.severity.ERROR] = " ",
-            [vim.diagnostic.severity.WARN] = " ",
-            [vim.diagnostic.severity.HINT] = " ",
-            [vim.diagnostic.severity.INFO] = " ",
+            [vim.diagnostic.severity.ERROR] = "",
+            [vim.diagnostic.severity.WARN]  = "",
+            [vim.diagnostic.severity.HINT]  = "",
+            [vim.diagnostic.severity.INFO]  = "",
         },
-        linehl = {
+        numhl = {
             [vim.diagnostic.severity.ERROR] = "ErrorMsg",
+            [vim.diagnostic.severity.WARN]  = "WarningMsg",
+            [vim.diagnostic.severity.HINT]  = "HintMsg",
+            [vim.diagnostic.severity.INFO]  = "InfoMsg",
         },
         priority = 9999,
+    },
+
+    -- Show virtual text on the current line if it's an error
+    virtual_text = {
+        severity = vim.diagnostic.severity.ERROR,
+        current_line = true
     },
 
     -- Show all diagnostics as underline
@@ -106,7 +116,6 @@ vim.g.neovide_cursor_trail_size = 0.2 -- 0.8 is default
 -- on mac, it is cmd+<key>
 local is_mac = jit.os == "OSX"
 if vim.g.neovide then
-    -- stylua: ignore start
     local modifier = "c"
     if is_mac then modifier = "D" end
     local function cmd(mod, key) return "<" .. mod .. "-" .. key .. ">" end
@@ -115,5 +124,4 @@ if vim.g.neovide then
     vim.keymap.set("v", cmd(modifier, "v"), '"+P') -- Paste visual mode
     vim.keymap.set("c", cmd(modifier, "v"), "<C-R>+") -- Paste command mode
     vim.keymap.set("i", cmd(modifier, "v"), '<ESC>"+Pi') -- Paste insert mode (doesn't quite behave great, but whatever)
-    -- stylua: ignore end
 end
