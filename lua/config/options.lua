@@ -1,8 +1,7 @@
 -- stylua: ignore start
 vim.g.mapleader = "\\"
 vim.g.maplocalleader = "\\"
-vim.g.markdown_recommended_style = 0 -- Fix markdown indentation settings
-vim.g.python_highlight_all = 1
+vim.g.disable_autoformat = true
 vim.cmd("filetype plugin indent on")
 if vim.fn.exists("syntax_on") ~= 1 then
     vim.cmd("syntax enable")

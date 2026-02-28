@@ -60,6 +60,7 @@ end
 -- Other Plugins =======================================================================================================
 nmap_leader("l",  cmd("Lazy"),  "Lazy")
 nmap_leader("cm", cmd("Mason"), "Mason")
+nmap_leader("cd", "FormatToggle", "Toggle format on save")
 
 -- Split/terminal navigation
 set({"n", "t"}, "<C-h>", cmd("lua require('kitty-navigator').navigateLeft()"),  {desc = "Move left"})

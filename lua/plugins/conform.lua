@@ -35,8 +35,6 @@ return {
 
             local toggle_autoformat = function() vim.g.disable_autoformat = not vim.g.disable_autoformat end
             vim.api.nvim_create_user_command("FormatToggle", toggle_autoformat, { desc = "Toggle autoformat-on-save" })
-            vim.g.disable_autoformat = true
-            vim.keymap.set("n", "<leader>cd", "<cmd>FormatToggle<cr>", { desc = "Toggle format on save" })
         end,
     },
 }
