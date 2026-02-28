@@ -1,7 +1,6 @@
 return {
     {
-        -- for a list of formatters:
-        -- :help conform-formatters
+        -- for a list of formatters :help conform-formatters
         "stevearc/conform.nvim",
         lazy = true,
         config = function()
@@ -34,18 +33,8 @@ return {
                 notify_on_error = false,
             })
 
-            vim.api.nvim_create_user_command("FormatToggle", function(args)
-                if args.bang then
-                    -- FormatToggle! will toggle just for this buffer
-                    vim.b.disable_autoformat = not vim.b.disable_autoformat
-                else
-                    vim.g.disable_autoformat = not vim.g.disable_autoformat
-                end
-            end, {
-                desc = "Toggle autoformat-on-save",
-                bang = true,
-            })
-
+            local toggle_autoformat = function() vim.g.disable_autoformat = not vim.g.disable_autoformat end
+            vim.api.nvim_create_user_command("FormatToggle", toggle_autoformat, { desc = "Toggle autoformat-on-save" })
             vim.g.disable_autoformat = true
             vim.keymap.set("n", "<leader>cd", "<cmd>FormatToggle<cr>", { desc = "Toggle format on save" })
         end,
