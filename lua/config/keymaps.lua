@@ -37,15 +37,22 @@ nmap_leader("sn",       cmd("lua Snacks.picker.notifications()"),               
 nmap_leader("u",        cmd("lua Snacks.picker.undo({layout = {preset = 'right'}})"),        "Undo")
 
 -- LSP =================================================================================================================
-set("n", "gd", cmd("lua Snacks.picker.lsp_definitions()"),                 { desc = "Definition" })
-set("n", "gr", cmd("lua Snacks.picker.lsp_references()"),                  { desc = "References (LSP)", nowait = true })
-set("n", "gi", cmd("lua Snacks.picker.lsp_implementations()"),             { desc = "Implementation" })
-set("n", "gt", cmd("lua Snacks.picker.lsp_type_definitions()"),            { desc = "Type definition" })
-set("n", "gs", cmd("lua vim.lsp.buf.signature_help()"),                    { desc = "Signature help" })
-set("n", "gl", cmd("lua vim.diagnostic.open_float()"),                     { desc = "Open diagnostic float" })
-set("n", "K",  cmd("lua vim.lsp.buf.hover()"),                             { desc = "Hover" })
-set("n", "[d", cmd("lua vim.diagnostic.jump({count = 1, float = true})"),  { desc = "Go to prev diagnostic" })
-set("n", "]d", cmd("lua vim.diagnostic.jump({count = -1, float = true})"), { desc = "Go to next diagnostic" })
+-- doing these in an autocommand so i don't overwrite the defaults
+-- in buffers that don't have language servers
+-- (particularly 'K' in man and help pages to follow links)
+local lsp_keymaps = function(ev)
+    local setl = function(lhs, rhs, desc, nowait) set("n", lhs, cmd(rhs), {desc = desc, buffer = ev.buf, nowait = nowait}) end
+    setl("gd", "lua Snacks.picker.lsp_definitions()", "LSP Definition")
+    setl("gr", "lua Snacks.picker.lsp_references()", "LSP References", true)
+    setl("gi", "lua Snacks.picker.lsp_implementations()", "LSP Implementation")
+    setl("gt", "lua Snacks.picker.lsp_type_definitions()", "LSP Type definition")
+    setl("gs", "lua vim.lsp.buf.signature_help()", "LSP Signature help")
+    setl("gl", "lua vim.diagnostic.open_float()", "Open diagnostic float")
+    setl("K",  "lua vim.lsp.buf.hover()", "LSP Hover")
+    setl("[d", "lua vim.diagnostic.jump({count = 1, float = true})", "Go to prev diagnostic")
+    setl("]d", "lua vim.diagnostic.jump({count = -1, float = true})", "Go to next diagnostic")
+end
+Config.new_autocmd("LspAttach", nil, lsp_keymaps, "LSP Keymaps")
 nmap_leader("ca",  cmd("lua vim.lsp.buf.code_action()"),                                      "Code actions")
 nmap_leader("cf",  cmd("lua require('conform').format({async = true, lsp_fallback = true})"), "Format document")
 nmap_leader("cr",  cmd("lua require('live-rename').rename({text = '', insert = true})"),      "Rename symbol")
