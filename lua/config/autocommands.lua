@@ -13,7 +13,6 @@ Config.new_autocmd("FileType", {
     "PlenaryTestPopup",
     "help",
     "lspinfo",
-    "man",
     "notify",
     "qf",
     "startuptime",
