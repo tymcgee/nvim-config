@@ -56,22 +56,13 @@ return {
 
             -- this is a no-op for parsers that are already installed
             ts.install(parsers)
-
-            local patterns = {}
-            for _, parser in ipairs(parsers) do
-                local parser_patterns = vim.treesitter.language.get_filetypes(parser)
-                for _, pp in pairs(parser_patterns) do
-                    table.insert(patterns, pp)
-                end
-            end
-
-            vim.treesitter.language.register("groovy", "Jenkinsfile")
+            local installed_filetypes = ts.get_installed()
 
             local start = function()
                 vim.treesitter.start()
-                vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                -- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
             end
-            Config.new_autocmd("FileType", patterns, start, "Enable treesitter")
+            Config.new_autocmd("FileType", installed_filetypes, start, "Enable treesitter")
         end,
     },
 }
