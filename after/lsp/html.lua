@@ -1,5 +1,5 @@
 return {
-    filetypes = require("html-filetypes"),
+    filetypes = require("plugin.html-filetypes"),
     settings = {
         html = {
             format = {

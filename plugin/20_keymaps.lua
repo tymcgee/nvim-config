@@ -8,7 +8,7 @@ nmap_leader("-",  "<C-W>s",                                 "Split window below"
 nmap_leader("|",  "<C-W>v",                                 "Split window right")
 nmap_leader("x",  cmd("tabclose"),                          "Close tab")
 nmap_leader("bD", cmd("lua MiniBufremove.delete(0, true)"), "Force delete buffer")
-vim.keymap.set("n", "<s-q>", cmd("lua MiniBufremove.delete()"), { desc = "Delete buffer" })
+set("n", "<s-q>", cmd("lua MiniBufremove.delete()"), { desc = "Delete buffer" })
 
 -- Git =================================================================================================================
 nmap_leader("gh",  cmd("Gitsigns preview_hunk_inline"), "Toggle git hunk (inline)")
@@ -57,17 +57,15 @@ nmap_leader("ca",  cmd("lua vim.lsp.buf.code_action()"),                        
 nmap_leader("cf",  cmd("lua require('conform').format({async = true, lsp_fallback = true})"), "Format document")
 nmap_leader("cr",  cmd("lua require('live-rename').rename({text = '', insert = true})"),      "Rename symbol")
 nmap_leader("cli", cmd("checkhealth vim.lsp"),                                                "LSP Info")
--- 0.12 might be changing this, LspRestart doesn't exist on nightly
-if vim.fn.has("nvim-0.12.0") == 1 then
-    nmap_leader("clr", cmd("lsp restart"), "Restart LSP")
-else
-    nmap_leader("clr", cmd("LspRestart"), "Restart LSP")
-end
+-- 0.12 changed this
+local is_12 = vim.fn.has("nvim-0.12.0") == 1
+local lsp_restart = is_12 and "lsp restart" or "LspRestart"
+nmap_leader("clr", cmd(lsp_restart), "Restart LSP")
 
 -- Other Plugins =======================================================================================================
-nmap_leader("l",  cmd("Lazy"),         "Lazy")
-nmap_leader("cm", cmd("Mason"),        "Mason")
-nmap_leader("cd", cmd("FormatToggle"), "Toggle format on save")
+nmap_leader("ls", function() vim.pack.update(nil, { target = 'lockfile' }) end, "Sync plugins with lockfile")
+nmap_leader("lu", function() vim.pack.update() end, "Update plugins")
+nmap_leader("cm", cmd("Mason"), "Mason")
 
 -- Split/terminal navigation
 set({"n", "t"}, "<C-h>", cmd("lua require('kitty-navigator').navigateLeft()"),  {desc = "Move left"})
