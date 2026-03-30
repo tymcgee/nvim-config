@@ -24,8 +24,6 @@ Config.on_packchanged = function(plugin_name, kinds, callback, desc)
 end
 -- stylua: ignore end
 
--- require("plugin.install-lsps")
-
 -- auto-launch the session chooser if opening neovide
 if vim.g.neovide then
     vim.schedule(function() vim.cmd("AutoSession search") end)

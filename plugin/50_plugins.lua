@@ -10,6 +10,10 @@ vim.pack.add({
     gh("lewis6991/gitsigns.nvim"),
     gh("sindrets/diffview.nvim"), -- :help diff-mode for some more info on how this works natively
 
+    -- terminal
+    gh("MunsMan/kitty-navigator.nvim"), -- note: don't forget to copy the .py files into ~/.config/kitty on a new machine
+    { src = "https://github.com/mikesmithgh/kitty-scrollback.nvim", version = vim.version.range("^9.0.0") },
+
     gh("navarasu/onedark.nvim"),
     gh("windwp/nvim-autopairs"),
     gh("nmac427/guess-indent.nvim"),
@@ -19,9 +23,6 @@ vim.pack.add({
     gh("MeanderingProgrammer/render-markdown.nvim"),
     gh("folke/snacks.nvim"),
     gh("stevearc/oil.nvim"),
-    -- note: for this to work on a new machine, you have to copy `navigate_kitty.py` and `pass_keys.py` into ~/.config/kitty (from the plugin repo)
-    gh("MunsMan/kitty-navigator.nvim"),
-    { src = "https://github.com/mikesmithgh/kitty-scrollback.nvim", version = vim.version.range("^9.0.0") },
 })
 require("kitty-scrollback").setup()
 
