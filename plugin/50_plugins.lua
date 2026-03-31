@@ -1,4 +1,4 @@
-local gh = function(spec) return "https://github.com/" .. spec end
+local gh = Config.gh
 
 vim.pack.add({
     -- lsp
@@ -38,6 +38,7 @@ require("mason-lspconfig").setup()
 require("diffview").setup({ file_panel = { listing_style = "list" } })
 require("nvim-autopairs").setup()
 require("guess-indent").setup()
+require("render-markdown").setup({ render_modes = { "n", "c", "i" }, completions = { lsp = { enabled = true } } })
 
 -- snacks
 require("snacks").setup({
