@@ -13,11 +13,13 @@ require("mini.align").setup()
 require("mini.icons").setup({ extension = { templ = { glyph = "", hl = "MiniIconsYellow" } } })
 MiniIcons.mock_nvim_web_devicons()
 
-local animate = require("mini.animate")
-animate.setup({
-    cursor = { enable = false },
-    scroll = { timing = animate.gen_timing.linear({ duration = 150, unit = "total" }) },
-})
+if not vim.g.neovide then
+    local animate = require("mini.animate")
+    animate.setup({
+        cursor = { enable = false },
+        scroll = { timing = animate.gen_timing.linear({ duration = 150, unit = "total" }) },
+    })
+end
 
 require("mini.operators").setup({
     replace = { prefix = "s" },
