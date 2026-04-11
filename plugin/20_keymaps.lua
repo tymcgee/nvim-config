@@ -82,6 +82,9 @@ nmap_leader("qd", cmd("AutoSession deletePicker"), "Delete sessions")
 nmap_leader("e", cmd("Oil"), "Open file explorer")
 nmap_leader("E", cmd("Oil ."), "Open CWD")
 
+-- Other
+nmap_leader("nt", cmd("lua vim.g.mininotify_disable = not vim.g.mininotify_disable"), "Toggle notifications")
+
 -- Misc ================================================================================================================
 -- Better up/down
 set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
