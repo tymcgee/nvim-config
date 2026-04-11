@@ -20,6 +20,7 @@ Config.new_autocmd("FileType", {
     "checkhealth",
     "gitsigns-blame",
     "grug-far",
+    "nvim-undotree",
 }, q_ft, "Close some filetypes with 'q'")
 
 -- Close diffview tab with 'q'

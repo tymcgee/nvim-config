@@ -34,7 +34,6 @@ nmap_leader("sm",       cmd("lua Snacks.picker.man()"),                         
 nmap_leader("sH",       cmd("lua Snacks.picker.highlights({layout = {preset = 'vscode'}})"), "Highlights")
 nmap_leader("ss",       cmd("lua Snacks.picker.lsp_symbols()"),                              "LSP Symbols")
 nmap_leader("sn",       cmd("lua Snacks.picker.notifications()"),                            "Notifications")
-nmap_leader("u",        cmd("lua Snacks.picker.undo({layout = {preset = 'right'}})"),        "Undo")
 
 -- LSP =================================================================================================================
 -- doing these in an autocommand so i don't overwrite the defaults
@@ -66,6 +65,7 @@ nmap_leader("clr", cmd(lsp_restart), "Restart LSP")
 nmap_leader("ls", function() vim.pack.update(nil, { target = 'lockfile' }) end, "Sync plugins with lockfile")
 nmap_leader("lu", function() vim.pack.update() end, "Update plugins")
 nmap_leader("cm", cmd("Mason"), "Mason")
+nmap_leader("u", cmd('lua require("undotree").open({command = "60vnew"})'), "Undotree")
 
 -- Split/terminal navigation
 set({"n", "t"}, "<C-h>", cmd("lua require('kitty-navigator').navigateLeft()"),  {desc = "Move left"})

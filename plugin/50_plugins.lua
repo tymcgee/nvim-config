@@ -24,7 +24,7 @@ vim.pack.add({
     gh("folke/snacks.nvim"),
     gh("stevearc/oil.nvim"),
 })
-require("kitty-scrollback").setup()
+vim.cmd("packadd nvim.undotree")
 
 -- don't make sessions when using kitty scrollback
 if vim.env.KITTY_SCROLLBACK_NVIM ~= "true" then
@@ -32,6 +32,7 @@ if vim.env.KITTY_SCROLLBACK_NVIM ~= "true" then
     require("auto-session").setup()
 end
 
+require("kitty-scrollback").setup()
 require("onedark").load()
 require("mason").setup()
 require("mason-lspconfig").setup()
@@ -65,3 +66,4 @@ require("oil").setup({
 
 -- stole this "background"-ish color from indent-blankline.nvim's default config... idk man
 vim.api.nvim_set_hl(0, "BlinkIndent", { fg = "#31353f" })
+vim.api.nvim_set_hl(0, "RenderMarkdownTodo", { link = "DiagnosticInfo" }) -- teal
