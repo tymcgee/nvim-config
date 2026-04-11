@@ -91,8 +91,8 @@ set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true
 set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 
 -- Auto-indent pasted text. `[ and `] are marks for the previously changed/yanked text
-set({ "n", "v" }, "p", "p`[v`]=<esc>_")
-set({ "n", "v" }, "P", "P`[v`]=<esc>_")
+-- set({ "n", "v" }, "p", "p`[v`]=<esc>_")
+-- set({ "n", "v" }, "P", "P`[v`]=<esc>_")
 
 -- Copy and paste from clipboard
 set({ "n", "v", "x" }, "<leader>y", '"+y')
