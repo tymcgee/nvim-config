@@ -54,7 +54,6 @@ vim.opt.tabstop       = 4                       -- Number of spaces tabs count f
 vim.opt.virtualedit   = "block"                 -- Allow virtual block mode to extend past a line
 vim.opt.completeopt   = "menu,menuone,noselect" -- Completion menu options
 
--- stylua: ignore end
 vim.filetype.add({
     extension = {
         templ = "templ",
@@ -106,8 +105,8 @@ local diagnostic_opts = {
 vim.diagnostic.config(diagnostic_opts)
 
 -- neovide stuff
-vim.o.guifont = "Iosevka Nerd Font Mono:h16"
-vim.g.neovide_scroll_animation_length = 0.1 -- 0.3 is default
+vim.o.guifont = "Iosevka:h16"
+vim.g.neovide_scroll_animation_length = 0.23 -- 0.3 is default
 vim.g.neovide_cursor_animation_length = 0.03 -- 0.13 is default
 vim.g.neovide_cursor_trail_size = 0.2 -- 0.8 is default
 -- some weird gui stuff for getting copy paste to work (copied from neovide faq)
