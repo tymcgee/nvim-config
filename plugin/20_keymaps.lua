@@ -72,6 +72,10 @@ set({"n", "t"}, "<C-h>", cmd("lua require('kitty-navigator').navigateLeft()"),  
 set({"n", "t"}, "<C-j>", cmd("lua require('kitty-navigator').navigateDown()"),  {desc = "Move down"})
 set({"n", "t"}, "<C-k>", cmd("lua require('kitty-navigator').navigateUp()"),    {desc = "Move up"})
 set({"n", "t"}, "<C-l>", cmd("lua require('kitty-navigator').navigateRight()"), {desc = "Move right"})
+set({"n", "t"}, "<C-left>", cmd("lua require('kitty-navigator').navigateLeft()"),  {desc = "Move left"})
+set({"n", "t"}, "<C-down>", cmd("lua require('kitty-navigator').navigateDown()"),  {desc = "Move down"})
+set({"n", "t"}, "<C-up>", cmd("lua require('kitty-navigator').navigateUp()"),    {desc = "Move up"})
+set({"n", "t"}, "<C-right>", cmd("lua require('kitty-navigator').navigateRight()"), {desc = "Move right"})
 
 -- Session
 -- note that from within the picker you can do ctrl+d to delete the highlighted session
