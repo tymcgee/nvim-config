@@ -17,3 +17,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
     desc = "LSP: Disable hover capability from Ruff",
 })
+
+require("mini.notify").setup({ lsp_progress = { enable = false } })

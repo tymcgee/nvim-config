@@ -6,7 +6,7 @@ return {
     end,
     settings = {
         basedpyright = {
-            typeCheckingMode = "standard",
+            typeCheckingMode = "standard", -- recommended is too noisy lol
         },
     },
 }
